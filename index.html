@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summit Auto Sales — Quality Used Cars</title>
+<meta name="description" content="PLACEHOLDER — Quality used vehicles, fully inspected, transparent pricing. Replace this copy and branding with your own before launch.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<!-- Component logic + placeholder Formspree endpoints — see script.js -->
+<script src="script.js" defer></script>
+<!-- Alpine.js (interactivity) -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
+</head>
+<body>
+
+<!-- ============================================================ NAV === -->
+<nav class="site-nav" x-data="nav">
+  <div class="wrap">
+    <a href="#top" class="brand">Summit <span>Auto</span></a>
+
+    <div class="nav-links">
+      <a href="#stock">Stock</a>
+      <a href="#how">How it works</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#compliance">Compliance</a>
+      <a href="#careers">Careers</a>
+    </div>
+    <a href="#enquire" class="btn btn-primary nav-cta-desktop">Enquire now</a>
+
+    <button class="nav-toggle" @click="open = !open" :aria-expanded="open" aria-label="Toggle menu">
+      <span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" :class="{ 'is-open': open }" x-cloak>
+    <a href="#stock" @click="open = false">Stock</a>
+    <a href="#how" @click="open = false">How it works</a>
+    <a href="#gallery" @click="open = false">Gallery</a>
+    <a href="#compliance" @click="open = false">Compliance</a>
+    <a href="#careers" @click="open = false">Careers</a>
+    <a href="#enquire" @click="open = false">Enquire now</a>
+  </div>
+</nav>
+
+<!-- =========================================================== HERO === -->
+<section id="top" class="hero">
+  <div class="wrap">
+    <h1>Find your next car.<br><mark>Buy with confidence.</mark></h1>
+    <p>Quality used vehicles, fully inspected and honestly priced. Browse our current stock below or tell us what you're after and we'll help you find it.</p>
+    <div class="cta-row">
+      <a href="#enquire" class="btn btn-primary">Enquire now</a>
+      <a href="#stock" class="btn btn-outline">View current stock</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================== STATS === -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num" x-data="statCounter(1200, { suffix: '+' })" x-text="display"></div>
+        <div class="stat-label">Cars sold</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" x-data="statCounter(15, { suffix: '+' })" x-text="display"></div>
+        <div class="stat-label">Years trading</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" x-data="statCounter(98, { suffix: '%' })" x-text="display"></div>
+        <div class="stat-label">Customer satisfaction</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" x-data="statCounter(24, { suffix: 'hr' })" x-text="display"></div>
+        <div class="stat-label">Average response time</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================================================== HOW IT WORKS === -->
+<section id="how" class="how">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">How it works</div>
+      <h2>Three steps to your next car</h2>
+      <p>No pressure, no hidden fees — just a straightforward process from enquiry to keys in hand.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <h3>Browse &amp; enquire</h3>
+        <p>Browse our current stock or tell us what you're after, and send us an enquiry — no obligation.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <h3>Inspect &amp; arrange</h3>
+        <p>We'll book a viewing or inspection, answer your questions, and help sort finance if you need it.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <h3>Drive away</h3>
+        <p>Complete the paperwork and drive away in your next car, backed by our satisfaction guarantee.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================= BEFORE / AFTER === -->
+<section class="compare">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Reconditioning</div>
+      <h2>See the difference</h2>
+      <p>Every car we sell is fully detailed and mechanically checked before it goes on the lot. Drag the slider to compare.</p>
+    </div>
+
+    <div class="compare-wrap"
+         x-data="compareSlider"
+         x-ref="wrap"
+         @mousedown="startDrag"
+         @touchstart="startDrag"
+         @mousemove.window="onMove"
+         @touchmove.window="onMove"
+         @mouseup.window="stopDrag"
+         @touchend.window="stopDrag">
+      <div class="compare-layer compare-after">AFTER PHOTO PLACEHOLDER</div>
+      <div class="compare-layer compare-before" :style="`clip-path: inset(0 ${100 - pos}% 0 0)`">BEFORE PHOTO PLACEHOLDER</div>
+      <span class="compare-tag tag-before">Before</span>
+      <span class="compare-tag tag-after">After</span>
+      <div class="compare-handle" :style="`left: ${pos}%`">
+        <div class="compare-grip">⇔</div>
+      </div>
+    </div>
+    <p class="compare-caption">Placeholder images — swap in real before/after photos of a recent reconditioning job.</p>
+  </div>
+</section>
+
+<!-- ======================================================= GALLERY === -->
+<section id="gallery" class="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Recent arrivals</div>
+      <h2>A look at what we sell</h2>
+      <p>A few recent vehicles that have come through the yard — placeholder photos, swap in your own gallery images.</p>
+    </div>
+
+    <div class="carousel" x-data="gallery">
+      <div class="carousel-viewport">
+        <div class="carousel-track" :style="`transform: translateX(-${index * 100}%)`">
+          <template x-for="(slide, i) in slides" :key="i">
+            <div class="carousel-slide">
+              <strong x-text="'Vehicle photo ' + slide"></strong>
+              <span>Placeholder — replace with a real gallery photo</span>
+            </div>
+          </template>
+        </div>
+      </div>
+      <button class="carousel-arrow prev" @click="prev" aria-label="Previous photo">‹</button>
+      <button class="carousel-arrow next" @click="next" aria-label="Next photo">›</button>
+      <div class="carousel-dots">
+        <template x-for="(slide, i) in slides" :key="i">
+          <button :class="{ 'is-active': i === index }" @click="goTo(i)" :aria-label="'Go to photo ' + (i + 1)"></button>
+        </template>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================================================== COMPLIANCE === -->
+<section id="compliance" class="compliance">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Buying interstate?</div>
+      <h2>Registration &amp; roadworthy guide</h2>
+      <p>Rules for transferring registration on a used car differ by state. Select yours to see the general pathway.</p>
+    </div>
+
+    <div class="compliance-grid" x-data="complianceMap">
+      <div class="map-col">
+        <svg viewBox="0 20 500 460" x-init="initMap($el)"></svg>
+        <div class="map-hint">Interactive map — click a state</div>
+      </div>
+
+      <div class="compliance-panel">
+        <div class="name-row">
+          <h3 x-text="current.name"></h3>
+          <span class="code" x-text="current.code"></span>
+        </div>
+        <p x-text="current.summary"></p>
+        <p x-text="current.body"></p>
+      </div>
+    </div>
+    <p class="compliance-disclaimer">General guide only, correct at time of writing — requirements change, so always confirm current rules with your state's road transport authority before you buy or sell.</p>
+  </div>
+</section>
+
+<!-- ======================================================== STOCK === -->
+<section id="stock" class="stock">
+  <div class="wrap" x-data="stockSection">
+    <div class="stock-head">
+      <div>
+        <div class="eyebrow">For sale now</div>
+        <h2>Current stock</h2>
+        <p style="color: var(--text-dim); font-size: 14.5px; margin-top: 12px; max-width: 48ch;">Loaded live from <code>stock.json</code> — edit that file to update what's listed here.</p>
+      </div>
+    </div>
+
+    <div class="stock-filters">
+      <template x-for="t in types" :key="t">
+        <button :class="{ 'is-active': filter === t }" @click="filter = t" x-text="t"></button>
+      </template>
+    </div>
+
+    <template x-if="loading">
+      <div class="stock-empty">Loading stock…</div>
+    </template>
+
+    <template x-if="!loading && filtered.length === 0">
+      <div class="stock-empty">No cars currently match that filter — check back soon.</div>
+    </template>
+
+    <template x-if="!loading && filtered.length > 0">
+      <div class="stock-grid">
+        <template x-for="car in filtered" :key="car.id">
+          <div class="car-card">
+            <div class="car-photo">
+              <span x-text="car.title"></span>
+              <span class="car-badge" :class="badgeClass(car)" x-text="car.status"></span>
+              <span class="car-price" x-text="priceLabel(car)"></span>
+            </div>
+            <div class="car-body">
+              <div>
+                <h3 x-text="car.title"></h3>
+                <div class="car-meta" x-text="car.location"></div>
+              </div>
+              <div class="car-tags">
+                <span x-text="car.odometer"></span>
+                <span x-text="car.transmission"></span>
+                <span x-text="car.fuel"></span>
+              </div>
+              <p class="blurb" x-text="car.blurb"></p>
+              <button class="btn btn-outline" @click="enquireAbout(car)">Enquire about this car</button>
+            </div>
+          </div>
+        </template>
+      </div>
+    </template>
+  </div>
+</section>
+
+<!-- ======================================================= ENQUIRE === -->
+<section id="enquire" class="enquire">
+  <div class="wrap">
+    <div class="enquire-grid">
+      <div class="enquire-copy">
+        <div class="eyebrow">Get in touch</div>
+        <h2>Send an enquiry</h2>
+        <p>Tell us what you're after — or which car on the lot caught your eye — and we'll get back to you, usually within 24 hours.</p>
+      </div>
+
+      <div class="form-card" x-data="enquiryForm">
+        <template x-if="!submitted">
+          <form @submit.prevent="submit" x-cloak>
+            <div class="field">
+              <label for="enq-name">Your name</label>
+              <input id="enq-name" name="name" x-model="name" placeholder="Full name" required>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="enq-type">Vehicle type</label>
+                <select id="enq-type" name="vehicle_type">
+                  <option value="">Select…</option>
+                  <option>Sedan</option>
+                  <option>SUV</option>
+                  <option>Hatchback</option>
+                  <option>Ute</option>
+                  <option>Coupe</option>
+                  <option>Wagon</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="enq-state">Your state</label>
+                <select id="enq-state" name="state">
+                  <option value="">Select…</option>
+                  <option>NSW</option><option>VIC</option><option>QLD</option><option>SA</option>
+                  <option>WA</option><option>TAS</option><option>ACT</option><option>NT</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="enq-contact">Phone or email</label>
+              <input id="enq-contact" name="contact" placeholder="How we reach you" required>
+            </div>
+            <div class="field">
+              <label for="enq-message">Message</label>
+              <textarea id="enq-message" name="message" rows="4" x-model="$store.enquiry.message" placeholder="Tell us what you're after…"></textarea>
+            </div>
+
+            <template x-if="error">
+              <div class="form-error">Something went wrong sending that — please try again, or email us directly.</div>
+            </template>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;" :disabled="submitting" x-text="submitting ? 'Sending…' : 'Send enquiry'"></button>
+          </form>
+        </template>
+
+        <template x-if="submitted">
+          <div class="success-block" x-cloak>
+            <div class="success-tag">✓ Enquiry received</div>
+            <h3>Thanks, <span x-text="name ? name.split(' ')[0] : 'there'"></span>.</h3>
+            <p>We've got your details and will be in touch soon.</p>
+            <button class="btn btn-outline" @click="reset">Edit enquiry</button>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= CAREERS === -->
+<section id="careers" class="careers">
+  <div class="wrap careers-inner">
+    <div class="eyebrow">Join the team</div>
+    <h2>We're hiring</h2>
+    <p class="lead">Experienced with used vehicle sales or workshop work? We're growing the team and want to hear from you.</p>
+
+    <div class="careers-form-wrap" x-data="careersForm">
+      <template x-if="!submitted">
+        <form @submit.prevent="submit" x-cloak>
+          <div class="field">
+            <label for="care-name">Full name</label>
+            <input id="care-name" name="name" x-model="name" placeholder="Full name" required>
+          </div>
+          <div class="field">
+            <label for="care-contact">Phone or email</label>
+            <input id="care-contact" name="contact" placeholder="Phone or email" required>
+          </div>
+          <div class="field">
+            <label for="care-message">Tell us about yourself</label>
+            <textarea id="care-message" name="message" rows="3" placeholder="Experience, role you're after…"></textarea>
+          </div>
+
+          <template x-if="error">
+            <div class="form-error">Something went wrong sending that — please try again, or email us directly.</div>
+          </template>
+
+          <div class="careers-btn-row">
+            <button type="submit" class="btn btn-primary" :disabled="submitting" x-text="submitting ? 'Sending…' : 'Submit application'"></button>
+          </div>
+        </form>
+      </template>
+
+      <template x-if="submitted">
+        <div class="success-block" x-cloak>
+          <div class="success-tag">✓ Application received</div>
+          <h3>Thanks, <span x-text="name ? name.split(' ')[0] : 'there'"></span>.</h3>
+          <p>We'll review your application and reach out if it's a fit.</p>
+          <button class="btn btn-outline" @click="reset">Edit application</button>
+        </div>
+      </template>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================== FOOTER === -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="#top" class="brand">Summit <span>Auto</span></a>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="#stock">Current stock</a>
+        <a href="#how">How it works</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#compliance">Compliance</a>
+        <a href="#careers">Careers</a>
+        <a href="#enquire">Enquire</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:info@example.com.au">info@example.com.au</a>
+        <span>By appointment · AU</span>
+      </div>
+      <div class="footer-col">
+        <h4>Policies</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Summit Auto Sales — placeholder brand, swap before launch.</span>
+      <span>Built with plain HTML/CSS + Alpine.js</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
