@@ -94,6 +94,9 @@
               <div class="eyebrow" x-text="car.type"></div>
               <h1 x-text="car.title"></h1>
               <div class="car-detail-price" x-text="priceLabel()"></div>
+              <template x-if="car.status !== 'sold'">
+                <div class="finance-estimate">Finance from <strong x-text="financeLabel()"></strong>* <span class="finance-note">*estimate only, beta</span></div>
+              </template>
               <div class="car-tags">
                 <span x-text="car.year"></span>
                 <span x-text="car.odometer"></span>

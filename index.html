@@ -111,36 +111,6 @@
   </div>
 </section>
 
-<!-- ================================================= BEFORE / AFTER === -->
-<section class="compare">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Reconditioning</div>
-      <h2>See the difference</h2>
-      <p>Every car we sell is fully detailed and mechanically checked before it goes on the lot. Drag the slider to compare.</p>
-    </div>
-
-    <div class="compare-wrap"
-         x-data="compareSlider"
-         x-ref="wrap"
-         @mousedown="startDrag"
-         @touchstart="startDrag"
-         @mousemove.window="onMove"
-         @touchmove.window="onMove"
-         @mouseup.window="stopDrag"
-         @touchend.window="stopDrag">
-      <div class="compare-layer compare-after">AFTER PHOTO PLACEHOLDER</div>
-      <div class="compare-layer compare-before" :style="`clip-path: inset(0 ${100 - pos}% 0 0)`">BEFORE PHOTO PLACEHOLDER</div>
-      <span class="compare-tag tag-before">Before</span>
-      <span class="compare-tag tag-after">After</span>
-      <div class="compare-handle" :style="`left: ${pos}%`">
-        <div class="compare-grip">⇔</div>
-      </div>
-    </div>
-    <p class="compare-caption">Placeholder images — swap in real before/after photos of a recent reconditioning job.</p>
-  </div>
-</section>
-
 <!-- ======================================================= GALLERY === -->
 <section id="gallery" class="gallery">
   <div class="wrap">
@@ -184,24 +154,10 @@
         </div>
         <a href="https://www.instagram.com/alexmiley_/" target="_blank" rel="noopener" class="btn btn-outline">Follow on Instagram →</a>
       </div>
-      <div class="reel-row">
-        <a href="https://www.instagram.com/alexmiley_/" target="_blank" rel="noopener" class="reel-card">
-          <span class="play-icon">▶</span>
-          <span class="reel-label">Reel placeholder</span>
-        </a>
-        <a href="https://www.instagram.com/alexmiley_/" target="_blank" rel="noopener" class="reel-card">
-          <span class="play-icon">▶</span>
-          <span class="reel-label">Reel placeholder</span>
-        </a>
-        <a href="https://www.instagram.com/alexmiley_/" target="_blank" rel="noopener" class="reel-card">
-          <span class="play-icon">▶</span>
-          <span class="reel-label">Reel placeholder</span>
-        </a>
-        <a href="https://www.instagram.com/alexmiley_/" target="_blank" rel="noopener" class="reel-card">
-          <span class="play-icon">▶</span>
-          <span class="reel-label">Reel placeholder</span>
-        </a>
+      <div class="reel-row reel-row-embed">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DazTD-sSv9c/" data-instgrm-version="14" style="background:#12151b; border:1px solid #232830; border-radius:8px; margin:0; max-width:340px; min-width:270px; width:100%;"></blockquote>
       </div>
+      <script async src="//www.instagram.com/embed.js"></script>
     </div>
 
     <div class="social-block">
@@ -212,19 +168,10 @@
         </div>
         <a href="https://www.youtube.com/@alexdmiley" target="_blank" rel="noopener" class="btn btn-outline">Subscribe on YouTube →</a>
       </div>
-      <div class="video-row">
-        <a href="https://www.youtube.com/@alexdmiley" target="_blank" rel="noopener" class="video-card">
-          <span class="play-icon">▶</span>
-          <span class="reel-label">Video placeholder</span>
-        </a>
-        <a href="https://www.youtube.com/@alexdmiley" target="_blank" rel="noopener" class="video-card">
-          <span class="play-icon">▶</span>
-          <span class="reel-label">Video placeholder</span>
-        </a>
-        <a href="https://www.youtube.com/@alexdmiley" target="_blank" rel="noopener" class="video-card">
-          <span class="play-icon">▶</span>
-          <span class="reel-label">Video placeholder</span>
-        </a>
+      <div class="video-row video-row-embed">
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/Y0avLS_ldRw" title="Nismo 270R - The Rarest Nissan that i'll ever own | Alex Miley Reviews" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+        </div>
       </div>
     </div>
 

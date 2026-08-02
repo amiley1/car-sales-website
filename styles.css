@@ -256,66 +256,6 @@ h1, h2, h3 {
 }
 .step-card p { font-size: 14px; line-height: 1.6; color: var(--text-dim); margin: 0; }
 
-/* ----------------------------------------------------------- BEFORE/AFTER */
-.compare {
-  padding: clamp(56px, 8vw, 100px) 0;
-  border-bottom: 1px solid var(--border-soft);
-}
-.compare-wrap {
-  position: relative;
-  max-width: 820px;
-  margin: 0 auto;
-  aspect-ratio: 16/9;
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1px solid var(--border);
-  cursor: ew-resize;
-  user-select: none;
-  touch-action: none;
-}
-.compare-layer {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-head);
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  font-size: 15px;
-}
-.compare-after {
-  background: repeating-linear-gradient(135deg, #1c2029 0 18px, #171b23 18px 36px);
-  color: var(--text-mute);
-}
-.compare-before {
-  background: repeating-linear-gradient(135deg, #23180f 0 18px, #1c150e 18px 36px);
-  color: #b98a4f;
-}
-.compare-tag {
-  position: absolute; top: 14px; font-size: 11px; font-weight: 700; letter-spacing: .1em;
-  text-transform: uppercase; padding: 5px 11px; border-radius: 20px;
-  background: rgba(0,0,0,.5); color: #fff;
-}
-.compare-tag.tag-before { left: 14px; }
-.compare-tag.tag-after { right: 14px; }
-.compare-handle {
-  position: absolute; top: 0; bottom: 0;
-  width: 3px; background: var(--accent);
-  transform: translateX(-50%);
-  box-shadow: 0 0 14px rgba(59,130,246,.6);
-}
-.compare-grip {
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 40px; height: 40px; border-radius: 50%;
-  background: var(--accent);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--accent-contrast); font-size: 14px; font-weight: 700;
-  box-shadow: 0 0 20px rgba(59,130,246,.5);
-}
-.compare-caption {
-  text-align: center; color: var(--text-mute); font-size: 13px; margin-top: 16px;
-}
-
 /* --------------------------------------------------------------- GALLERY */
 .gallery {
   padding: clamp(56px, 8vw, 100px) 0;
@@ -374,6 +314,12 @@ h1, h2, h3 {
   display: flex; align-items: center; justify-content: center; font-size: 15px; padding-left: 3px;
 }
 .reel-label { font-size: 11px; letter-spacing: .04em; text-transform: uppercase; }
+.reel-row-embed, .video-row-embed { overflow: visible; }
+.video-embed {
+  position: relative; width: 100%; max-width: 640px; aspect-ratio: 16/9;
+  border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border);
+}
+.video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .reel-card:hover, .video-card:hover { border-color: var(--accent); }
 
 /* ------------------------------------------------------------ COMPLIANCE */
@@ -490,7 +436,10 @@ h1, h2, h3 {
 }
 .car-gallery-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .car-detail-info h1 { font-size: clamp(30px, 4vw, 46px); line-height: 1; margin: 8px 0 16px; }
-.car-detail-price { font-family: var(--font-head); font-weight: 700; font-size: clamp(26px, 3vw, 34px); color: #fff; margin-bottom: 16px; }
+.car-detail-price { font-family: var(--font-head); font-weight: 700; font-size: clamp(26px, 3vw, 34px); color: #fff; margin-bottom: 4px; }
+.finance-estimate { font-size: 13px; color: var(--text-dim); margin-bottom: 16px; }
+.finance-estimate strong { color: var(--accent); font-weight: 600; }
+.finance-note { font-size: 11px; color: var(--text-mute); }
 .feature-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
 .feature-chip {
   font-size: 12px; font-weight: 500; color: var(--text-dim); background: var(--card);

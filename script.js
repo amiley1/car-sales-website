@@ -81,23 +81,6 @@ function statCounter(target, opts = {}) {
   };
 }
 
-function compareSlider() {
-  return {
-    pos: 50,
-    dragging: false,
-    startDrag() { this.dragging = true; },
-    stopDrag() { this.dragging = false; },
-    onMove(e) {
-      if (!this.dragging) return;
-      const rect = this.$refs.wrap.getBoundingClientRect();
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      let pct = ((clientX - rect.left) / rect.width) * 100;
-      pct = Math.max(0, Math.min(100, pct));
-      this.pos = pct;
-    },
-  };
-}
-
 function gallery() {
   return {
     index: 0,
@@ -244,6 +227,13 @@ function carDetail() {
       const price = '$' + this.car.price.toLocaleString('en-AU');
       return this.car.status === 'sold' ? ('Sold · ' + price) : price;
     },
+    // BETA — placeholder finance estimate only: (price / 1000) * 5 per week.
+    // Not a real finance quote; replace with an actual lender calculation
+    // before this is presented to customers as a genuine offer.
+    financeLabel() {
+      const perWeek = Math.round((this.car.price / 1000) * 5);
+      return '$' + perWeek.toLocaleString('en-AU') + ' per week';
+    },
     badgeClass() {
       return this.car.status === 'available' ? 'available' : this.car.status === 'on hold' ? 'on-hold' : 'sold';
     },
@@ -326,7 +316,6 @@ document.addEventListener('alpine:init', () => {
   Alpine.store('careers', { position: '' });
   Alpine.data('nav', () => ({ open: false }));
   Alpine.data('statCounter', statCounter);
-  Alpine.data('compareSlider', compareSlider);
   Alpine.data('gallery', gallery);
   Alpine.data('complianceMap', complianceMap);
   Alpine.data('stockSection', stockSection);
