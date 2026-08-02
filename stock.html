@@ -88,7 +88,7 @@
         <template x-for="car in filtered" :key="car.id">
           <div class="car-card">
             <a class="car-photo" :href="'car.html?slug=' + car.slug">
-              <span x-text="car.title"></span>
+              <img :src="car.photos[0]" :alt="car.title" loading="lazy">
               <span class="car-badge" :class="badgeClass(car)" x-text="car.status"></span>
               <span class="car-price" x-text="priceLabel(car)"></span>
             </a>

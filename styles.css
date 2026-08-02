@@ -424,12 +424,13 @@ h1, h2, h3 {
 .stock-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 22px; }
 .car-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
 .car-photo {
-  position: relative; aspect-ratio: 4/3;
+  position: relative; aspect-ratio: 4/3; overflow: hidden;
   background: repeating-linear-gradient(135deg, #181c24 0 18px, #131620 18px 36px);
   display: flex; align-items: center; justify-content: center;
   color: var(--text-mute); font-size: 12px; letter-spacing: .06em; text-transform: uppercase;
   text-decoration: none;
 }
+.car-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .car-title-link { text-decoration: none; }
 .car-title-link:hover h3 { color: var(--accent); }
 .car-badge {
@@ -487,8 +488,26 @@ h1, h2, h3 {
   background: repeating-linear-gradient(135deg, #181c24 0 18px, #131620 18px 36px);
   color: var(--text-mute); font-size: 13px; letter-spacing: .06em; text-transform: uppercase;
 }
+.car-gallery-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .car-detail-info h1 { font-size: clamp(30px, 4vw, 46px); line-height: 1; margin: 8px 0 16px; }
 .car-detail-price { font-family: var(--font-head); font-weight: 700; font-size: clamp(26px, 3vw, 34px); color: #fff; margin-bottom: 16px; }
+.feature-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.feature-chip {
+  font-size: 12px; font-weight: 500; color: var(--text-dim); background: var(--card);
+  border: 1px solid var(--border); border-radius: 20px; padding: 6px 13px;
+}
+.car-spec-table { margin-top: clamp(40px, 6vw, 56px); max-width: 70ch; }
+.car-spec-table h2 { font-size: 22px; margin-bottom: 18px; }
+.spec-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; border-top: 1px solid var(--border-soft); }
+.spec-row {
+  display: flex; justify-content: space-between; gap: 16px; padding: 12px 0;
+  border-bottom: 1px solid var(--border-soft); font-size: 14px;
+}
+@media (max-width: 560px) {
+  .spec-grid { grid-template-columns: 1fr; }
+}
+.spec-row span { color: var(--text-mute); }
+.spec-row strong { color: var(--text); font-weight: 500; text-align: right; }
 .car-detail-description { max-width: 70ch; margin-top: clamp(40px, 6vw, 64px); }
 .car-detail-description h2 { font-size: 22px; margin-bottom: 16px; }
 .car-detail-description p { font-size: 15px; line-height: 1.7; color: var(--text-dim); margin: 0 0 14px; }

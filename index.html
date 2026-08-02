@@ -284,7 +284,7 @@
         <template x-for="car in filtered" :key="car.id">
           <div class="car-card">
             <a class="car-photo" :href="'car.html?slug=' + car.slug">
-              <span x-text="car.title"></span>
+              <img :src="car.photos[0]" :alt="car.title" loading="lazy">
               <span class="car-badge" :class="badgeClass(car)" x-text="car.status"></span>
               <span class="car-price" x-text="priceLabel(car)"></span>
             </a>
@@ -330,12 +330,10 @@
                 <label for="enq-type">Vehicle type</label>
                 <select id="enq-type" name="vehicle_type">
                   <option value="">Select…</option>
-                  <option>Sedan</option>
-                  <option>SUV</option>
-                  <option>Hatchback</option>
-                  <option>Ute</option>
-                  <option>Coupe</option>
-                  <option>Wagon</option>
+                  <option>R32 GT-R</option>
+                  <option>R33 GT-R</option>
+                  <option>R34 GT-R</option>
+                  <option>Supra</option>
                   <option>Other</option>
                 </select>
               </div>

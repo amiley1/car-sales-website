@@ -72,7 +72,7 @@
               <div class="car-gallery-viewport">
                 <div class="car-gallery-track" :style="`transform: translateX(-${photoIndex * 100}%)`">
                   <template x-for="(photo, i) in photos" :key="i">
-                    <div class="car-gallery-slide">Photo placeholder</div>
+                    <div class="car-gallery-slide"><img :src="photo" :alt="car.title + ' photo ' + (i + 1)" loading="lazy"></div>
                   </template>
                 </div>
                 <span class="car-badge" :class="badgeClass()" x-text="car.status" style="top: 14px; left: 14px;"></span>
@@ -101,7 +101,34 @@
                 <span x-text="car.fuel"></span>
               </div>
               <div class="car-meta" x-text="car.location" style="margin: 14px 0 20px;"></div>
+
+              <template x-if="car.features && car.features.length">
+                <div class="feature-chips">
+                  <template x-for="(f, i) in car.features" :key="i">
+                    <span class="feature-chip" x-text="f"></span>
+                  </template>
+                </div>
+              </template>
+
               <button class="btn btn-primary" style="width: 100%;" @click="enquire">Enquire about this car</button>
+            </div>
+          </div>
+
+          <div class="car-spec-table">
+            <h2>Specifications</h2>
+            <div class="spec-grid">
+              <div class="spec-row"><span>Make</span><strong x-text="car.make"></strong></div>
+              <div class="spec-row"><span>Model</span><strong x-text="car.model"></strong></div>
+              <div class="spec-row"><span>Chassis Code</span><strong x-text="car.chassisCode"></strong></div>
+              <div class="spec-row"><span>Year</span><strong x-text="car.year"></strong></div>
+              <div class="spec-row"><span>Colour</span><strong x-text="car.colour"></strong></div>
+              <div class="spec-row"><span>Engine</span><strong x-text="car.engine"></strong></div>
+              <div class="spec-row"><span>Drivetrain</span><strong x-text="car.drivetrain"></strong></div>
+              <div class="spec-row"><span>Transmission</span><strong x-text="car.transmission"></strong></div>
+              <div class="spec-row"><span>Condition</span><strong x-text="car.condition"></strong></div>
+              <div class="spec-row"><span>Odometer</span><strong x-text="car.odometer"></strong></div>
+              <div class="spec-row"><span>Fuel Type</span><strong x-text="car.fuel"></strong></div>
+              <div class="spec-row"><span>Doors</span><strong x-text="car.doors"></strong></div>
             </div>
           </div>
 
