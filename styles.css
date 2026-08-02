@@ -615,3 +615,16 @@ footer .wrap { padding: clamp(44px, 5vw, 68px) clamp(16px, 4vw, 48px); }
 .apply-card .optional { text-transform: none; font-weight: 400; color: #8a92a3; }
 .apply-card .success-block h3 { color: #0f1424; }
 .apply-card .success-block p { color: #4b5468; }
+
+/* ----------------------------------------------------------- LEGAL PAGES */
+.legal-page { padding: clamp(48px, 7vw, 90px) 0 clamp(64px, 9vw, 110px); }
+.legal-page .wrap { max-width: 760px; }
+.legal-page h1 { font-size: clamp(34px, 5vw, 52px); margin: 10px 0 18px; }
+.legal-updated { font-size: 13px; color: var(--text-mute); margin: 0 0 40px; padding-bottom: 24px; border-bottom: 1px solid var(--border-soft); }
+.legal-page h2 {
+  font-size: 18px; font-weight: 600; text-transform: none; font-family: var(--font-body);
+  color: #fff; margin: 36px 0 12px;
+}
+.legal-page h2:first-of-type { margin-top: 0; }
+.legal-page p { font-size: 14.5px; line-height: 1.7; color: var(--text-dim); margin: 0 0 14px; }
+.legal-page a { color: var(--accent); text-decoration: underline; }

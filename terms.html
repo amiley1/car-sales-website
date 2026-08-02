@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms & Conditions — Alex Miley JDM</title>
+<meta name="description" content="Terms and conditions for Alex Miley JDM.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<script src="script.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
+</head>
+<body>
+
+<!-- ============================================================ NAV === -->
+<nav class="site-nav" x-data="nav">
+  <div class="wrap">
+    <a href="index.html#top" class="brand">Alex Miley <span>JDM</span></a>
+
+    <div class="nav-links">
+      <a href="stock.html">Stock</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="index.html#compliance">Compliance</a>
+      <a href="careers.html">Careers</a>
+    </div>
+    <a href="index.html#enquire" class="btn btn-primary nav-cta-desktop">Enquire now</a>
+
+    <button class="nav-toggle" @click="open = !open" :aria-expanded="open" aria-label="Toggle menu">
+      <span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" :class="{ 'is-open': open }" x-cloak>
+    <a href="stock.html" @click="open = false">Stock</a>
+    <a href="index.html#how" @click="open = false">How it works</a>
+    <a href="index.html#gallery" @click="open = false">Gallery</a>
+    <a href="index.html#compliance" @click="open = false">Compliance</a>
+    <a href="careers.html" @click="open = false">Careers</a>
+    <a href="index.html#enquire" @click="open = false">Enquire now</a>
+  </div>
+</nav>
+
+<!-- ============================================================ LEGAL === -->
+<section class="legal-page">
+  <div class="wrap">
+    <div class="eyebrow">Legal</div>
+    <h1>Terms &amp; Conditions</h1>
+    <p class="legal-updated">Last updated: [insert date] · Applies to alexmileyjdm.com and all vehicle sales conducted by [Business Name / ABN].</p>
+
+    <h2>1. Acceptance of these terms</h2>
+    <p>By accessing this website, submitting an enquiry, reserving a vehicle, or purchasing a vehicle from us, you agree to be bound by these Terms &amp; Conditions. If you do not agree, do not use this website or engage in a transaction with us.</p>
+
+    <h2>2. About us</h2>
+    <p>This website is operated by [Business Name], ABN [insert ABN], based in [insert business address / registered location]. References to "we", "us", or "our" mean [Business Name].</p>
+
+    <h2>3. Website content is indicative only</h2>
+    <p>Vehicle listings, descriptions, specifications, pricing, and photographs on this website are provided for general informational purposes only and are believed accurate at the time of posting, but are not guaranteed. Errors, omissions, or changes (including sold status, price, or availability) may occur without notice. Photographs may not depict the exact vehicle in its current condition and are not a substitute for a physical inspection.</p>
+    <p>Nothing on this website constitutes a binding offer to sell a specific vehicle at a specific price. Any vehicle remains available for sale to any buyer until a deposit has been received and expressly confirmed by us in writing.</p>
+
+    <h2>4. Enquiries, holds, and deposits</h2>
+    <p>Submitting an enquiry through this website does not reserve a vehicle. A vehicle is only held once we have received a deposit and confirmed the hold in writing (including by email or text message). Deposit amounts, hold periods, and refund conditions will be agreed in writing on a case-by-case basis before payment is made. Except where required by law, deposits are non-refundable if you withdraw from a confirmed purchase without a valid reason recognised under the Australian Consumer Law.</p>
+
+    <h2>5. Sale of vehicles — buyer's responsibility to inspect</h2>
+    <p>Used vehicles are sold on an as-is, as-inspected basis, subject to section 6 below. You are strongly encouraged, and it is your responsibility, to physically inspect any vehicle and, if you wish, arrange an independent pre-purchase inspection by a qualified mechanic before committing to purchase. We do not guarantee a vehicle is free of defects beyond what is disclosed to you in writing prior to sale.</p>
+    <p>Any specification, modification, performance, or condition claims made verbally or in a listing are provided in good faith but are superseded by the written contract of sale and any written disclosures provided at the time of sale. You should not rely solely on verbal representations.</p>
+
+    <h2>6. Australian Consumer Law</h2>
+    <p>Nothing in these Terms excludes, restricts, or modifies any guarantee, right, or remedy conferred on you by the Australian Consumer Law (ACL) or any other law that cannot lawfully be excluded, restricted, or modified. Where the ACL applies and permits us to limit our liability, our liability is limited, at our option, to (a) replacement of the goods or supply of equivalent goods, (b) repair of the goods, (c) payment of the cost of replacing the goods or of acquiring equivalent goods, or (d) payment of the cost of having the goods repaired — to the maximum extent the law allows us to make that election.</p>
+
+    <h2>7. Registration, roadworthy, and compliance</h2>
+    <p>Requirements for registering a used vehicle, obtaining a roadworthy/safety certificate, and transferring registration differ by state and are the buyer's responsibility to confirm and satisfy. Our <a href="index.html#compliance">Compliance guide</a> is general information only, not legal or regulatory advice, and may not reflect current requirements — always confirm with your state's road transport authority before purchase. We are not liable for any delay, cost, or inability to register a vehicle in your state.</p>
+
+    <h2>8. Payment and transfer of ownership</h2>
+    <p>Full payment of the agreed purchase price is required in cleared funds before a vehicle is released or ownership transferred. Ownership and title in the vehicle do not pass to you until we have received full and cleared payment. Risk in the vehicle passes to you on collection or delivery, whichever occurs first.</p>
+
+    <h2>9. Limitation of liability</h2>
+    <p>To the maximum extent permitted by law, and subject to section 6 above, we exclude all liability (whether in contract, tort, negligence, or otherwise) for any indirect, special, or consequential loss arising from your use of this website or a vehicle purchased from us. Where our liability cannot be excluded, it is limited as set out in section 6.</p>
+
+    <h2>10. Indemnity</h2>
+    <p>To the extent permitted by law, you agree to indemnify us against any claim, loss, damage, or expense arising from your use, modification, or on-sale of a vehicle purchased from us after the point ownership transfers to you, except to the extent caused by our own negligence or breach of a guarantee that cannot be excluded under the ACL.</p>
+
+    <h2>11. Intellectual property</h2>
+    <p>All text, photographs, graphics, and other content on this website are owned by us or used with permission, and may not be copied, reproduced, or reused without our prior written consent, other than for your own personal, non-commercial use in considering a purchase from us.</p>
+
+    <h2>12. Third-party links and services</h2>
+    <p>This website links to and integrates with third-party platforms including Instagram, YouTube, Facebook Marketplace, and Formspree (our enquiry/application form processor). We do not control and are not responsible for the content, availability, or practices of these third-party services. Your use of them is subject to their own terms and privacy policies.</p>
+
+    <h2>13. Privacy</h2>
+    <p>Our collection and handling of personal information is set out in our <a href="privacy.html">Privacy Policy</a>, which forms part of these Terms.</p>
+
+    <h2>14. Changes to these terms</h2>
+    <p>We may update these Terms &amp; Conditions at any time by publishing a revised version on this website. Changes take effect once published and apply to transactions entered into after that date.</p>
+
+    <h2>15. Governing law</h2>
+    <p>These Terms are governed by the laws of [State/Territory, e.g. Queensland], Australia, and you submit to the non-exclusive jurisdiction of its courts.</p>
+
+    <h2>16. Contact us</h2>
+    <p>Questions about these Terms can be sent to <a href="mailto:info@example.com.au">info@example.com.au</a>.</p>
+  </div>
+</section>
+
+<!-- ======================================================== FOOTER === -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html#top" class="brand">Alex Miley <span>JDM</span></a>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/alexmiley_/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2Zm0 1.8c-3.15 0-3.5.01-4.73.07-.97.04-1.5.2-1.85.34-.46.18-.8.4-1.15.75-.35.35-.57.68-.75 1.15-.14.35-.3.88-.34 1.85-.06 1.23-.07 1.58-.07 4.73s.01 3.5.07 4.73c.04.97.2 1.5.34 1.85.18.46.4.8.75 1.15.35.35.68.57 1.15.75.35.14.88.3 1.85.34 1.23.06 1.58.07 4.73.07s3.5-.01 4.73-.07c.97-.04 1.5-.2 1.85-.34.46-.18.8-.4 1.15-.75.35-.35.57-.68.75-1.15.14-.35.3-.88.34-1.85.06-1.23.07-1.58.07-4.73s-.01-3.5-.07-4.73c-.04-.97-.2-1.5-.34-1.85a2 2 0 0 0-.75-1.15 2 2 0 0 0-1.15-.75c-.35-.14-.88-.3-1.85-.34-1.23-.06-1.58-.07-4.73-.07Zm0 3.4a5.6 5.6 0 1 1 0 11.2 5.6 5.6 0 0 1 0-11.2Zm0 1.8a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Zm5.8-2a1.3 1.3 0 1 1-2.6 0 1.3 1.3 0 0 1 2.6 0Z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@alexdmiley" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M22 12s0-3.2-.4-4.7c-.24-.87-.92-1.55-1.79-1.79C18.3 5 12 5 12 5s-6.3 0-7.81.51a2.44 2.44 0 0 0-1.79 1.79C2 8.8 2 12 2 12s0 3.2.4 4.7c.24.87.92 1.55 1.79 1.79C5.7 19 12 19 12 19s6.3 0 7.81-.51a2.44 2.44 0 0 0 1.79-1.79C22 15.2 22 12 22 12Zm-12 3V9l5.2 3-5.2 3Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>— Explore</h4>
+        <a href="stock.html">Current stock</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="index.html#compliance">Compliance</a>
+        <a href="careers.html">Careers</a>
+        <a href="index.html#enquire">Enquire</a>
+      </div>
+      <div class="footer-col">
+        <h4>— Contact</h4>
+        <a href="mailto:info@example.com.au">info@example.com.au</a>
+        <span>By appointment · AU</span>
+      </div>
+      <div class="footer-col">
+        <h4>— Policies</h4>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Alex Miley JDM. All Rights Reserved.</span>
+      <span>Built with plain HTML/CSS + Alpine.js</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
