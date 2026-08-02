@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GT-R Registry — Alex Miley JDM</title>
+<meta name="description" content="Searchable Nissan Skyline GT-R chassis registry — R32, R33, R34 and R35. Filter by generation, model, colour and production date; search by VIN.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://registry.ztune.com.au" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<!-- Component logic + placeholder Formspree endpoints — see script.js -->
+<script src="script.js" defer></script>
+<!-- Alpine.js (interactivity) -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
+
+<style>
+  /* --- registry-specific --- */
+  .reg-controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 22px; }
+  .reg-controls .field { margin-bottom: 0; }
+  .reg-count { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+  .reg-count .line { font-size: 13px; color: var(--text-dim); }
+  .reg-count .warn { font-size: 12.5px; color: #e0a44f; }
+  .reg-table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--card); }
+  table.reg-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 820px; }
+  table.reg-table thead th {
+    position: sticky; top: 0; background: #161a21; text-align: left; cursor: pointer; user-select: none;
+    font-weight: 600; letter-spacing: .04em; text-transform: uppercase; font-size: 11px; color: var(--text-dim);
+    padding: 13px 16px; border-bottom: 1px solid var(--border); white-space: nowrap;
+  }
+  table.reg-table thead th:hover { color: var(--text); }
+  table.reg-table thead th .arr { color: var(--accent-bright); font-size: 10px; margin-left: 5px; }
+  table.reg-table tbody td { padding: 12px 16px; border-bottom: 1px solid var(--border-soft); color: #c8ccd4; vertical-align: top; }
+  table.reg-table tbody tr:last-child td { border-bottom: none; }
+  table.reg-table tbody tr:hover td { background: #161a21; }
+  td.mono { font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace; font-size: 12.5px; color: var(--text); letter-spacing: .02em; white-space: nowrap; }
+  td .dim { color: var(--text-mute); }
+  .reg-pager { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 22px; flex-wrap: wrap; }
+  .reg-pager .page-info { font-size: 13px; color: var(--text-dim); }
+  .reg-note { margin: 34px 0 0; font-size: 12px; line-height: 1.6; color: var(--text-mute); max-width: 70ch; }
+  .btn[disabled] { opacity: .35; cursor: not-allowed; pointer-events: none; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ NAV === -->
+<nav class="site-nav" x-data="nav">
+  <div class="wrap">
+    <a href="index.html#top" class="brand">Alex Miley <span>JDM</span></a>
+
+    <div class="nav-links">
+      <a href="stock.html">Stock</a>
+      <a href="registry.html" style="color: var(--text);">Registry</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="index.html#compliance">Compliance</a>
+      <a href="careers.html">Careers</a>
+    </div>
+    <a href="index.html#enquire" class="btn btn-primary nav-cta-desktop">Enquire now</a>
+
+    <button class="nav-toggle" @click="open = !open" :aria-expanded="open" aria-label="Toggle menu">
+      <span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" :class="{ 'is-open': open }" x-cloak>
+    <a href="stock.html" @click="open = false">Stock</a>
+    <a href="registry.html" @click="open = false">Registry</a>
+    <a href="index.html#how" @click="open = false">How it works</a>
+    <a href="index.html#gallery" @click="open = false">Gallery</a>
+    <a href="index.html#compliance" @click="open = false">Compliance</a>
+    <a href="careers.html" @click="open = false">Careers</a>
+    <a href="index.html#enquire" @click="open = false">Enquire now</a>
+  </div>
+</nav>
+
+<!-- ================================================= REGISTRY HEADER === -->
+<section class="stock-page-hero">
+  <div class="wrap">
+    <div class="eyebrow">Chassis records</div>
+    <h1>GT-R Registry</h1>
+    <p>Search authenticated Nissan Skyline GT-R chassis records across every generation. Filter by generation, model, colour and production window, or search a VIN directly — tap any column heading to sort.</p>
+  </div>
+</section>
+
+<!-- ==================================================== REGISTRY === -->
+<section class="stock stock-page">
+  <div class="wrap" x-data="registry" x-init="init()">
+
+    <!-- generation chips -->
+    <div class="stock-filters" style="margin-bottom: 16px;">
+      <template x-for="g in generations" :key="g.value">
+        <button :class="{ 'is-active': generation === g.value }" @click="selectGen(g.value)" x-text="g.label"></button>
+      </template>
+      <button @click="clearAll()" style="margin-left: 6px;">Clear all</button>
+    </div>
+
+    <!-- filters -->
+    <div class="reg-controls">
+      <div class="field">
+        <label for="fVin">Search VIN</label>
+        <input id="fVin" type="text" placeholder="e.g. BNR34-000051" autocomplete="off"
+               x-model="vin" @input.debounce.300ms="offset = 0; fetchBrowse()">
+      </div>
+      <div class="field">
+        <label for="fModel">Model / trim</label>
+        <select id="fModel" x-model="model" @change="offset = 0; fetchBrowse()">
+          <option value="">All trims</option>
+          <template x-for="m in models" :key="m"><option :value="m" x-text="m"></option></template>
+        </select>
+      </div>
+      <div class="field">
+        <label for="fColour">Colour</label>
+        <select id="fColour" x-model="colour" @change="offset = 0; fetchBrowse()">
+          <option value="">All colours</option>
+          <template x-for="c in colours" :key="c"><option :value="c" x-text="c"></option></template>
+        </select>
+      </div>
+      <div class="field">
+        <label for="fYear">Production year</label>
+        <select id="fYear" x-model="year" @change="onYearChange()">
+          <option value="">Any year</option>
+          <template x-for="y in years" :key="y"><option :value="y" x-text="y"></option></template>
+        </select>
+      </div>
+      <div class="field">
+        <label for="fMonth">Month</label>
+        <select id="fMonth" x-model="month" @change="offset = 0; fetchBrowse()">
+          <option value="">Any month</option>
+          <template x-for="mo in months" :key="mo"><option :value="mo" x-text="mo"></option></template>
+        </select>
+      </div>
+    </div>
+
+    <!-- count / warning -->
+    <div class="reg-count">
+      <div class="line" x-text="countLine()"></div>
+      <div class="warn" x-text="warn"></div>
+    </div>
+
+    <!-- table -->
+    <div class="reg-table-wrap">
+      <table class="reg-table">
+        <thead>
+          <tr>
+            <template x-for="col in columns" :key="col.key">
+              <th @click="sortBy(col.key)">
+                <span x-text="col.label"></span><span class="arr" x-text="arrow(col.key)"></span>
+              </th>
+            </template>
+          </tr>
+        </thead>
+        <tbody>
+          <template x-if="loading">
+            <tr><td colspan="6" style="padding: 28px 16px; color: var(--text-mute);">Loading…</td></tr>
+          </template>
+          <template x-if="!loading && items.length === 0">
+            <tr><td colspan="6" style="padding: 28px 16px; color: var(--text-mute);">No vehicles match these filters.</td></tr>
+          </template>
+          <template x-if="!loading">
+            <template x-for="(row, i) in items" :key="i">
+              <tr>
+                <td><span x-show="row.generation" x-text="row.generation"></span><span x-show="!row.generation" class="dim">—</span></td>
+                <td class="mono"><span x-show="displayVin(row)" x-text="displayVin(row)"></span><span x-show="!displayVin(row)" class="dim">—</span></td>
+                <td><span x-show="row.model" x-text="row.model"></span><span x-show="!row.model" class="dim">—</span></td>
+                <td><span x-show="row.production_date" x-text="row.production_date"></span><span x-show="!row.production_date" class="dim">—</span></td>
+                <td><span x-show="row.colour" x-text="row.colour"></span><span x-show="!row.colour" class="dim">—</span></td>
+                <td><span x-show="row.specifications" x-text="row.specifications"></span><span x-show="!row.specifications" class="dim">—</span></td>
+              </tr>
+            </template>
+          </template>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- pager -->
+    <div class="reg-pager">
+      <button class="btn btn-outline" @click="prev()" :disabled="!canPrev()">← Previous</button>
+      <div class="page-info" x-text="pageInfo()"></div>
+      <button class="btn btn-outline" @click="next()" :disabled="!canNext()">Next →</button>
+    </div>
+
+    <p class="reg-note">Registry data is provided for reference only and may contain gaps or inaccuracies. Chassis records sourced from the public ztune GT-R registry.</p>
+  </div>
+</section>
+
+<!-- ======================================================== FOOTER === -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html#top" class="brand">Alex Miley <span>JDM</span></a>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/alexmiley_/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2Zm0 1.8c-3.15 0-3.5.01-4.73.07-.97.04-1.5.2-1.85.34-.46.18-.8.4-1.15.75-.35.35-.57.68-.75 1.15-.14.35-.3.88-.34 1.85-.06 1.23-.07 1.58-.07 4.73s.01 3.5.07 4.73c.04.97.2 1.5.34 1.85.18.46.4.8.75 1.15.35.35.68.57 1.15.75.35.14.88.3 1.85.34 1.23.06 1.58.07 4.73.07s3.5-.01 4.73-.07c.97-.04 1.5-.2 1.85-.34.46-.18.8-.4 1.15-.75.35-.35.57-.68.75-1.15.14-.35.3-.88.34-1.85.06-1.23.07-1.58.07-4.73s-.01-3.5-.07-4.73c-.04-.97-.2-1.5-.34-1.85a2 2 0 0 0-.75-1.15 2 2 0 0 0-1.15-.75c-.35-.14-.88-.3-1.85-.34-1.23-.06-1.58-.07-4.73-.07Zm0 3.4a5.6 5.6 0 1 1 0 11.2 5.6 5.6 0 0 1 0-11.2Zm0 1.8a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Zm5.8-2a1.3 1.3 0 1 1-2.6 0 1.3 1.3 0 0 1 2.6 0Z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@alexdmiley" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M22 12s0-3.2-.4-4.7c-.24-.87-.92-1.55-1.79-1.79C18.3 5 12 5 12 5s-6.3 0-7.81.51a2.44 2.44 0 0 0-1.79 1.79C2 8.8 2 12 2 12s0 3.2.4 4.7c.24.87.92 1.55 1.79 1.79C5.7 19 12 19 12 19s6.3 0 7.81-.51a2.44 2.44 0 0 0 1.79-1.79C22 15.2 22 12 22 12Zm-12 3V9l5.2 3-5.2 3Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>— Explore</h4>
+        <a href="stock.html">Current stock</a>
+        <a href="registry.html">GT-R Registry</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="index.html#compliance">Compliance</a>
+        <a href="careers.html">Careers</a>
+      </div>
+      <div class="footer-col">
+        <h4>— Contact</h4>
+        <a href="mailto:info@example.com.au">info@example.com.au</a>
+        <span>By appointment · AU</span>
+      </div>
+      <div class="footer-col">
+        <h4>— Policies</h4>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Alex Miley JDM. All Rights Reserved.</span>
+      <span>Built with plain HTML/CSS + Alpine.js</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('alpine:init', function () {
+  Alpine.data('registry', function () {
+    var API = 'https://registry.ztune.com.au';
+    var PAGE_SIZE = 50;
+    return {
+      // config
+      generations: [
+        { value: '', label: 'All' },
+        { value: 'R32', label: 'R32' },
+        { value: 'R33', label: 'R33' },
+        { value: 'R34', label: 'R34' },
+        { value: 'R35', label: 'R35' }
+      ],
+      columns: [
+        { key: 'generation', label: 'Generation' },
+        { key: 'vin', label: 'VIN' },
+        { key: 'model', label: 'Model / trim' },
+        { key: 'production_date', label: 'Production' },
+        { key: 'colour', label: 'Colour' },
+        { key: 'specifications', label: 'Specifications' }
+      ],
+      // filter state
+      generation: '', vin: '', model: '', colour: '', year: '', month: '',
+      sort: 'vin', sortDir: 'asc',
+      // data
+      items: [], total: 0, offset: 0, lastCount: 0, loading: true, warn: '',
+      models: [], colours: [], years: [], months: [],
+      // sequence guards
+      _browseSeq: 0, _facetSeq: 0, _monthSeq: 0,
+
+      init: function () {
+        this.refreshFacets();
+        this.fetchBrowse();
+      },
+
+      displayVin: function (row) { return row.vin2 || row.vin || ''; },
+
+      browseParams: function () {
+        var p = new URLSearchParams();
+        p.set('registry', 'gtr');
+        if (this.generation) p.set('generation', this.generation);
+        if (this.vin) p.set('vin', this.vin.trim());
+        if (this.model) p.set('model', this.model);
+        if (this.colour) p.set('colour', this.colour);
+        if (this.year && this.month) p.set('production', this.year + '-' + this.month);
+        else if (this.year) p.set('production', this.year);
+        p.set('sort', this.sort);
+        p.set('sort_dir', this.sortDir);
+        p.set('limit', String(PAGE_SIZE));
+        p.set('offset', String(this.offset));
+        return p;
+      },
+
+      facetsUrl: function (field, year) {
+        var p = new URLSearchParams();
+        p.set('registry', 'gtr');
+        if (this.generation) p.set('generation', this.generation);
+        p.set('field', field);
+        if (year) p.set('year', year);
+        return API + '/facets?' + p.toString();
+      },
+
+      fetchBrowse: function () {
+        var my = ++this._browseSeq;
+        var self = this;
+        this.loading = true;
+        fetch(API + '/browse?' + this.browseParams().toString(), { headers: { Accept: 'application/json' } })
+          .then(function (res) {
+            return res.json().catch(function () { return null; }).then(function (data) {
+              return { ok: res.ok, status: res.status, data: data };
+            });
+          })
+          .then(function (r) {
+            if (my !== self._browseSeq) return;
+            self.loading = false;
+            if (!r.ok || !r.data) {
+              self.warn = 'Could not load registry (error ' + (r.status || '?') + ').';
+              self.total = 0; self.lastCount = 0; self.items = [];
+              return;
+            }
+            self.warn = '';
+            self.total = typeof r.data.total === 'number' ? r.data.total : 0;
+            self.items = r.data.items || [];
+            self.lastCount = self.items.length;
+          })
+          .catch(function () {
+            if (my !== self._browseSeq) return;
+            self.loading = false;
+            self.warn = 'Network error loading registry.';
+            self.items = [];
+          });
+      },
+
+      refreshFacets: function () {
+        var my = ++this._facetSeq;
+        var self = this;
+        var urls = [this.facetsUrl('model'), this.facetsUrl('colour'), this.facetsUrl('production_year')];
+        Promise.all(urls.map(function (u) {
+          return fetch(u, { headers: { Accept: 'application/json' } })
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .catch(function () { return null; });
+        })).then(function (payloads) {
+          if (my !== self._facetSeq) return;
+          self.models = (payloads[0] && payloads[0].values) || [];
+          self.colours = (payloads[1] && payloads[1].values) || [];
+          self.years = (payloads[2] && payloads[2].values) || [];
+          self.model = ''; self.colour = ''; self.year = ''; self.month = ''; self.months = [];
+        });
+      },
+
+      refreshMonths: function () {
+        var my = ++this._monthSeq;
+        var self = this;
+        if (!this.year) { this.months = []; this.month = ''; return; }
+        fetch(this.facetsUrl('production_month', this.year), { headers: { Accept: 'application/json' } })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (data) {
+            if (my !== self._monthSeq) return;
+            self.months = (data && data.values) || [];
+            self.month = '';
+          })
+          .catch(function () { if (my === self._monthSeq) self.months = []; });
+      },
+
+      selectGen: function (g) {
+        this.generation = g;
+        this.offset = 0;
+        this.refreshFacets();
+        this.fetchBrowse();
+      },
+
+      clearAll: function () {
+        this.generation = ''; this.vin = ''; this.model = ''; this.colour = '';
+        this.year = ''; this.month = ''; this.months = [];
+        this.sort = 'vin'; this.sortDir = 'asc'; this.offset = 0;
+        this.refreshFacets();
+        this.fetchBrowse();
+      },
+
+      onYearChange: function () {
+        this.offset = 0;
+        this.refreshMonths();
+        this.fetchBrowse();
+      },
+
+      sortBy: function (field) {
+        if (this.sort === field) {
+          this.sortDir = this.sortDir === 'asc' ? 'desc' : 'asc';
+        } else {
+          this.sort = field; this.sortDir = 'asc';
+        }
+        this.offset = 0;
+        this.fetchBrowse();
+      },
+
+      arrow: function (field) {
+        if (this.sort !== field) return '';
+        return this.sortDir === 'asc' ? '▲' : '▼';
+      },
+
+      canPrev: function () { return !this.loading && this.offset > 0; },
+      canNext: function () { return !this.loading && (this.offset + PAGE_SIZE < this.total); },
+
+      prev: function () {
+        if (!this.canPrev()) return;
+        this.offset = Math.max(0, this.offset - PAGE_SIZE);
+        this.fetchBrowse();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      },
+
+      next: function () {
+        if (!this.canNext()) return;
+        this.offset += PAGE_SIZE;
+        this.fetchBrowse();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      },
+
+      countLine: function () {
+        if (this.loading) return 'Loading…';
+        if (!this.total) return '0 records';
+        var start = this.offset + 1;
+        var end = Math.min(this.offset + this.lastCount, this.total);
+        return start.toLocaleString('en-AU') + '–' + end.toLocaleString('en-AU') + ' of ' + this.total.toLocaleString('en-AU') + ' records';
+      },
+
+      pageInfo: function () {
+        if (!this.total) return '';
+        var page = Math.floor(this.offset / PAGE_SIZE) + 1;
+        var pages = Math.max(1, Math.ceil(this.total / PAGE_SIZE));
+        return 'Page ' + page.toLocaleString('en-AU') + ' of ' + pages.toLocaleString('en-AU');
+      }
+    };
+  });
+});
+</script>
+
+</body>
+</html>
