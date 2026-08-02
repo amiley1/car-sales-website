@@ -1,6 +1,7 @@
 [
   {
     "id": "camry-2019",
+    "slug": "2019-toyota-camry-ascent",
     "title": "2019 Toyota Camry Ascent",
     "type": "Sedan",
     "price": 24990,
@@ -11,10 +12,13 @@
     "fuel": "Petrol",
     "location": "Sample Location, QLD",
     "blurb": "One owner, full service history, excellent condition throughout. Placeholder listing — replace with your real stock.",
-    "photo": "placeholder"
+    "full_description": "Placeholder full description — replace with the real transcribed Facebook Marketplace listing text.\n\nOne owner from new, this Camry Ascent has been dealer-serviced its entire life with every receipt kept. No accident history, no mechanical issues, drives exactly as it should.\n\nComes with two keys, spare wheel, and all original books and manuals.",
+    "photos": ["placeholder", "placeholder", "placeholder"],
+    "posted": "2026-07-30"
   },
   {
     "id": "cx5-2020",
+    "slug": "2020-mazda-cx5-touring",
     "title": "2020 Mazda CX-5 Touring",
     "type": "SUV",
     "price": 32990,
@@ -25,10 +29,13 @@
     "fuel": "Petrol",
     "location": "Sample Location, QLD",
     "blurb": "Low kilometres, all-wheel drive, recent major service completed. Placeholder listing — replace with your real stock.",
-    "photo": "placeholder"
+    "full_description": "Placeholder full description — replace with the real transcribed Facebook Marketplace listing text.\n\nGenuinely low kilometres for the age, all-wheel drive, and just had its major service completed with receipts available.\n\nImmaculate condition inside and out, no kerbing on wheels, non-smoker vehicle.",
+    "photos": ["placeholder", "placeholder", "placeholder"],
+    "posted": "2026-07-27"
   },
   {
     "id": "ranger-2018",
+    "slug": "2018-ford-ranger-xlt",
     "title": "2018 Ford Ranger XLT",
     "type": "Ute",
     "price": 38500,
@@ -39,10 +46,13 @@
     "fuel": "Diesel",
     "location": "Sample Location, QLD",
     "blurb": "Dual cab, tow pack fitted, tidy tray, ready for work or weekends. Placeholder listing — replace with your real stock.",
-    "photo": "placeholder"
+    "full_description": "Placeholder full description — replace with the real transcribed Facebook Marketplace listing text.\n\nDual cab XLT with genuine tow pack, canopy, and tidy tray liner. Used for weekend towing only, never worked as a tradie truck.\n\nRecent tyres all round, current rego, ready to go.",
+    "photos": ["placeholder", "placeholder"],
+    "posted": "2026-07-22"
   },
   {
     "id": "corolla-2021",
+    "slug": "2021-toyota-corolla-ascent-sport",
     "title": "2021 Toyota Corolla Ascent Sport",
     "type": "Hatchback",
     "price": 26990,
@@ -53,10 +63,13 @@
     "fuel": "Hybrid",
     "location": "Sample Location, QLD",
     "blurb": "Hybrid drivetrain, still under manufacturer warranty. Placeholder listing — replace with your real stock.",
-    "photo": "placeholder"
+    "full_description": "Placeholder full description — replace with the real transcribed Facebook Marketplace listing text.\n\nHybrid Ascent Sport still under the remainder of its factory warranty, genuinely low kilometres for the year.\n\nGreat fuel economy, sold with full service history.",
+    "photos": ["placeholder", "placeholder"],
+    "posted": "2026-07-18"
   },
   {
     "id": "86-2017",
+    "slug": "2017-toyota-86-gt",
     "title": "2017 Toyota 86 GT",
     "type": "Coupe",
     "price": 27990,
@@ -67,10 +80,13 @@
     "fuel": "Petrol",
     "location": "Sample Location, QLD",
     "blurb": "Manual gearbox, unmodified, well maintained enthusiast car. Placeholder listing — replace with your real stock.",
-    "photo": "placeholder"
+    "full_description": "Placeholder full description — replace with the real transcribed Facebook Marketplace listing text.\n\nCompletely unmodified 86 GT, six-speed manual, well maintained by an enthusiast owner. Regularly serviced, no track use.\n\nGenuine reason for sale, priced to sell quickly.",
+    "photos": ["placeholder", "placeholder", "placeholder"],
+    "posted": "2026-07-14"
   },
   {
     "id": "outback-2019",
+    "slug": "2019-subaru-outback-25i",
     "title": "2019 Subaru Outback 2.5i",
     "type": "Wagon",
     "price": 29990,
@@ -81,6 +97,42 @@
     "fuel": "Petrol",
     "location": "Sample Location, QLD",
     "blurb": "All-wheel drive, roof racks, genuinely tidy family wagon. Placeholder listing — replace with your real stock.",
-    "photo": "placeholder"
+    "full_description": "Placeholder full description — replace with the real transcribed Facebook Marketplace listing text.\n\nFamily-owned Outback, all-wheel drive, genuine roof racks fitted from new. Great condition throughout.\n\nUpgraded to a bigger vehicle, hence the sale.",
+    "photos": ["placeholder"],
+    "posted": "2026-07-09"
+  },
+  {
+    "id": "wrx-2016",
+    "slug": "2016-subaru-wrx-sti",
+    "title": "2016 Subaru WRX STI",
+    "type": "Sedan",
+    "price": 34990,
+    "status": "available",
+    "year": 2016,
+    "odometer": "72,400 km",
+    "transmission": "Manual",
+    "fuel": "Petrol",
+    "location": "Sample Location, QLD",
+    "blurb": "Unmodified, full service history, genuine low-kay example. Placeholder listing — replace with your real stock.",
+    "full_description": "Placeholder full description — replace with the real transcribed Facebook Marketplace listing text.\n\nFully unmodified WRX STI with a complete service history — every scheduled service done on time.\n\nGenuine low-kilometre example of a car that's usually thrashed. Test drives welcome.",
+    "photos": ["placeholder", "placeholder", "placeholder"],
+    "posted": "2026-07-05"
+  },
+  {
+    "id": "civic-2015",
+    "slug": "2015-honda-civic-vtis",
+    "title": "2015 Honda Civic VTi-S",
+    "type": "Hatchback",
+    "price": 15990,
+    "status": "sold",
+    "year": 2015,
+    "odometer": "88,000 km",
+    "transmission": "Automatic",
+    "fuel": "Petrol",
+    "location": "Sample Location, QLD",
+    "blurb": "Reliable daily, recently serviced, new tyres all round. Placeholder listing — replace with your real stock.",
+    "full_description": "Placeholder full description — replace with the real transcribed Facebook Marketplace listing text.\n\nReliable daily driver, just serviced with new tyres fitted all round.\n\nHonest, straightforward car — no dramas, just needs a new home.",
+    "photos": ["placeholder", "placeholder"],
+    "posted": "2026-06-28"
   }
 ]

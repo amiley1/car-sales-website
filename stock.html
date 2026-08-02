@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Stock — Alex Miley JDM</title>
+<meta name="description" content="PLACEHOLDER — Every car currently for sale at Alex Miley JDM, synced from Facebook Marketplace.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<!-- Component logic + placeholder Formspree endpoints — see script.js -->
+<script src="script.js" defer></script>
+<!-- Alpine.js (interactivity) -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
+</head>
+<body>
+
+<!-- ============================================================ NAV === -->
+<nav class="site-nav" x-data="nav">
+  <div class="wrap">
+    <a href="index.html#top" class="brand">Alex Miley <span>JDM</span></a>
+
+    <div class="nav-links">
+      <a href="stock.html" style="color: var(--text);">Stock</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="index.html#compliance">Compliance</a>
+      <a href="careers.html">Careers</a>
+    </div>
+    <a href="index.html#enquire" class="btn btn-primary nav-cta-desktop">Enquire now</a>
+
+    <button class="nav-toggle" @click="open = !open" :aria-expanded="open" aria-label="Toggle menu">
+      <span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" :class="{ 'is-open': open }" x-cloak>
+    <a href="stock.html" @click="open = false">Stock</a>
+    <a href="index.html#how" @click="open = false">How it works</a>
+    <a href="index.html#gallery" @click="open = false">Gallery</a>
+    <a href="index.html#compliance" @click="open = false">Compliance</a>
+    <a href="careers.html" @click="open = false">Careers</a>
+    <a href="index.html#enquire" @click="open = false">Enquire now</a>
+  </div>
+</nav>
+
+<!-- ==================================================== STOCK HEADER === -->
+<section class="stock-page-hero">
+  <div class="wrap">
+    <div class="eyebrow">For sale now</div>
+    <h1>All current stock</h1>
+    <p>Every car we've currently got, synced straight from our Facebook Marketplace listings — this list updates automatically, so check back often.</p>
+  </div>
+</section>
+
+<!-- ======================================================= STOCK ALL === -->
+<section class="stock stock-page">
+  <div class="wrap" x-data="stockSection({})">
+    <div class="stock-toolbar">
+      <div class="stock-filters">
+        <template x-for="t in types" :key="t">
+          <button :class="{ 'is-active': filter === t }" @click="filter = t" x-text="t"></button>
+        </template>
+      </div>
+      <div class="stock-sort">
+        <label for="sort">Sort</label>
+        <select id="sort" x-model="sort">
+          <option value="newest">Newest listed</option>
+          <option value="price-asc">Price: low to high</option>
+          <option value="price-desc">Price: high to low</option>
+        </select>
+      </div>
+    </div>
+
+    <template x-if="loading">
+      <div class="stock-empty">Loading stock…</div>
+    </template>
+
+    <template x-if="!loading && filtered.length === 0">
+      <div class="stock-empty">No cars currently match that filter — check back soon.</div>
+    </template>
+
+    <template x-if="!loading && filtered.length > 0">
+      <div class="stock-grid">
+        <template x-for="car in filtered" :key="car.id">
+          <div class="car-card">
+            <a class="car-photo" :href="'car.html?slug=' + car.slug">
+              <span x-text="car.title"></span>
+              <span class="car-badge" :class="badgeClass(car)" x-text="car.status"></span>
+              <span class="car-price" x-text="priceLabel(car)"></span>
+            </a>
+            <div class="car-body">
+              <div>
+                <a :href="'car.html?slug=' + car.slug" class="car-title-link"><h3 x-text="car.title"></h3></a>
+                <div class="car-meta" x-text="car.location"></div>
+              </div>
+              <div class="car-tags">
+                <span x-text="car.odometer"></span>
+                <span x-text="car.transmission"></span>
+                <span x-text="car.fuel"></span>
+              </div>
+              <p class="blurb" x-text="car.blurb"></p>
+              <button class="btn btn-outline" @click="enquireAbout(car)">Enquire about this car</button>
+            </div>
+          </div>
+        </template>
+      </div>
+    </template>
+  </div>
+</section>
+
+<!-- ======================================================== FOOTER === -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html#top" class="brand">Alex Miley <span>JDM</span></a>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/alexmiley_/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2Zm0 1.8c-3.15 0-3.5.01-4.73.07-.97.04-1.5.2-1.85.34-.46.18-.8.4-1.15.75-.35.35-.57.68-.75 1.15-.14.35-.3.88-.34 1.85-.06 1.23-.07 1.58-.07 4.73s.01 3.5.07 4.73c.04.97.2 1.5.34 1.85.18.46.4.8.75 1.15.35.35.68.57 1.15.75.35.14.88.3 1.85.34 1.23.06 1.58.07 4.73.07s3.5-.01 4.73-.07c.97-.04 1.5-.2 1.85-.34.46-.18.8-.4 1.15-.75.35-.35.57-.68.75-1.15.14-.35.3-.88.34-1.85.06-1.23.07-1.58.07-4.73s-.01-3.5-.07-4.73c-.04-.97-.2-1.5-.34-1.85a2 2 0 0 0-.75-1.15 2 2 0 0 0-1.15-.75c-.35-.14-.88-.3-1.85-.34-1.23-.06-1.58-.07-4.73-.07Zm0 3.4a5.6 5.6 0 1 1 0 11.2 5.6 5.6 0 0 1 0-11.2Zm0 1.8a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Zm5.8-2a1.3 1.3 0 1 1-2.6 0 1.3 1.3 0 0 1 2.6 0Z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@alexdmiley" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M22 12s0-3.2-.4-4.7c-.24-.87-.92-1.55-1.79-1.79C18.3 5 12 5 12 5s-6.3 0-7.81.51a2.44 2.44 0 0 0-1.79 1.79C2 8.8 2 12 2 12s0 3.2.4 4.7c.24.87.92 1.55 1.79 1.79C5.7 19 12 19 12 19s6.3 0 7.81-.51a2.44 2.44 0 0 0 1.79-1.79C22 15.2 22 12 22 12Zm-12 3V9l5.2 3-5.2 3Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>— Explore</h4>
+        <a href="stock.html">Current stock</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="index.html#compliance">Compliance</a>
+        <a href="careers.html">Careers</a>
+        <a href="index.html#enquire">Enquire</a>
+      </div>
+      <div class="footer-col">
+        <h4>— Contact</h4>
+        <a href="mailto:info@example.com.au">info@example.com.au</a>
+        <span>By appointment · AU</span>
+      </div>
+      <div class="footer-col">
+        <h4>— Policies</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Alex Miley JDM. All Rights Reserved.</span>
+      <span>Built with plain HTML/CSS + Alpine.js</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

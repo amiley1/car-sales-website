@@ -155,11 +155,15 @@ function complianceMap() {
   };
 }
 
-function stockSection() {
+// Shared by the homepage's "6 most recent" preview and the full stock.html
+// listing — pass { limit: 6 } for the homepage, {} for the full page.
+function stockSection(opts = {}) {
+  const limit = opts.limit || null;
   return {
     cars: [],
     loading: true,
     filter: 'All',
+    sort: 'newest',
     async init() {
       try {
         const res = await fetch('stock.json');
@@ -173,8 +177,15 @@ function stockSection() {
     get types() {
       return ['All', ...new Set(this.cars.map((c) => c.type))];
     },
+    get sorted() {
+      const list = this.filter === 'All' ? this.cars.slice() : this.cars.filter((c) => c.type === this.filter);
+      if (this.sort === 'price-asc') list.sort((a, b) => a.price - b.price);
+      else if (this.sort === 'price-desc') list.sort((a, b) => b.price - a.price);
+      else list.sort((a, b) => new Date(b.posted) - new Date(a.posted));
+      return list;
+    },
     get filtered() {
-      return this.filter === 'All' ? this.cars : this.cars.filter((c) => c.type === this.filter);
+      return limit ? this.sorted.slice(0, limit) : this.sorted;
     },
     priceLabel(car) {
       const price = '$' + car.price.toLocaleString('en-AU');
@@ -183,10 +194,61 @@ function stockSection() {
     badgeClass(car) {
       return car.status === 'available' ? 'available' : car.status === 'on hold' ? 'on-hold' : 'sold';
     },
+    // Homepage has its own #enquire section to scroll to; from stock.html
+    // (no enquiry form on that page) hop to the homepage with the car name
+    // carried in the URL so the message field still gets prefilled.
     enquireAbout(car) {
-      const store = Alpine.store('enquiry');
-      store.message = 'I’m interested in the ' + car.title + '.';
-      document.getElementById('enquire').scrollIntoView({ behavior: 'smooth' });
+      const target = document.getElementById('enquire');
+      if (target) {
+        Alpine.store('enquiry').message = 'I’m interested in the ' + car.title + '.';
+        target.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.location.href = 'index.html?car=' + encodeURIComponent(car.title) + '#enquire';
+      }
+    },
+  };
+}
+
+// Individual car page (car.html?slug=...) — pulls the matching entry out of
+// the same stock.json, so a new sync just needs a slug to get its own page.
+function carDetail() {
+  return {
+    car: null,
+    loading: true,
+    notFound: false,
+    photoIndex: 0,
+    async init() {
+      const slug = new URLSearchParams(location.search).get('slug');
+      try {
+        const res = await fetch('stock.json');
+        const cars = await res.json();
+        this.car = cars.find((c) => c.slug === slug) || null;
+        if (!this.car) this.notFound = true;
+      } catch (e) {
+        console.error('Failed to load stock.json', e);
+        this.notFound = true;
+      } finally {
+        this.loading = false;
+      }
+    },
+    get photos() {
+      return this.car && this.car.photos && this.car.photos.length ? this.car.photos : ['placeholder'];
+    },
+    get descriptionParagraphs() {
+      return this.car && this.car.full_description ? this.car.full_description.split('\n').filter((p) => p.trim()) : [];
+    },
+    nextPhoto() { this.photoIndex = (this.photoIndex + 1) % this.photos.length; },
+    prevPhoto() { this.photoIndex = (this.photoIndex - 1 + this.photos.length) % this.photos.length; },
+    goToPhoto(i) { this.photoIndex = i; },
+    priceLabel() {
+      const price = '$' + this.car.price.toLocaleString('en-AU');
+      return this.car.status === 'sold' ? ('Sold · ' + price) : price;
+    },
+    badgeClass() {
+      return this.car.status === 'available' ? 'available' : this.car.status === 'on hold' ? 'on-hold' : 'sold';
+    },
+    enquire() {
+      window.location.href = 'index.html?car=' + encodeURIComponent(this.car.title) + '#enquire';
     },
   };
 }
@@ -197,6 +259,12 @@ function enquiryForm() {
     submitted: false,
     error: false,
     name: '',
+    // Arriving from stock.html?car=... (a different page, so the Alpine
+    // store didn't carry over) — prefill the message from the URL instead.
+    init() {
+      const car = new URLSearchParams(location.search).get('car');
+      if (car) Alpine.store('enquiry').message = 'I’m interested in the ' + car + '.';
+    },
     async submit(e) {
       this.submitting = true;
       this.error = false;
@@ -262,6 +330,7 @@ document.addEventListener('alpine:init', () => {
   Alpine.data('gallery', gallery);
   Alpine.data('complianceMap', complianceMap);
   Alpine.data('stockSection', stockSection);
+  Alpine.data('carDetail', carDetail);
   Alpine.data('enquiryForm', enquiryForm);
   Alpine.data('careersApplyForm', careersApplyForm);
 });

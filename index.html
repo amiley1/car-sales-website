@@ -24,7 +24,7 @@
     <a href="#top" class="brand">Alex Miley <span>JDM</span></a>
 
     <div class="nav-links">
-      <a href="#stock">Stock</a>
+      <a href="stock.html">Stock</a>
       <a href="#how">How it works</a>
       <a href="#gallery">Gallery</a>
       <a href="#compliance">Compliance</a>
@@ -38,7 +38,7 @@
   </div>
 
   <div class="mobile-menu" :class="{ 'is-open': open }" x-cloak>
-    <a href="#stock" @click="open = false">Stock</a>
+    <a href="stock.html" @click="open = false">Stock</a>
     <a href="#how" @click="open = false">How it works</a>
     <a href="#gallery" @click="open = false">Gallery</a>
     <a href="#compliance" @click="open = false">Compliance</a>
@@ -54,7 +54,7 @@
     <p>Quality used vehicles, fully inspected and honestly priced. Browse our current stock below or tell us what you're after and we'll help you find it.</p>
     <div class="cta-row">
       <a href="#enquire" class="btn btn-primary">Enquire now</a>
-      <a href="#stock" class="btn btn-outline">View current stock</a>
+      <a href="stock.html" class="btn btn-outline">View current stock</a>
     </div>
   </div>
 </section>
@@ -172,6 +172,65 @@
   </div>
 </section>
 
+<!-- ======================================================= SOCIAL === -->
+<section id="social" class="social-feed">
+  <div class="wrap">
+
+    <div class="social-block">
+      <div class="social-block-head">
+        <div>
+          <div class="eyebrow">Follow along</div>
+          <h2>Our Instagram</h2>
+        </div>
+        <a href="https://www.instagram.com/alexmiley_/" target="_blank" rel="noopener" class="btn btn-outline">Follow on Instagram →</a>
+      </div>
+      <div class="reel-row">
+        <a href="https://www.instagram.com/alexmiley_/" target="_blank" rel="noopener" class="reel-card">
+          <span class="play-icon">▶</span>
+          <span class="reel-label">Reel placeholder</span>
+        </a>
+        <a href="https://www.instagram.com/alexmiley_/" target="_blank" rel="noopener" class="reel-card">
+          <span class="play-icon">▶</span>
+          <span class="reel-label">Reel placeholder</span>
+        </a>
+        <a href="https://www.instagram.com/alexmiley_/" target="_blank" rel="noopener" class="reel-card">
+          <span class="play-icon">▶</span>
+          <span class="reel-label">Reel placeholder</span>
+        </a>
+        <a href="https://www.instagram.com/alexmiley_/" target="_blank" rel="noopener" class="reel-card">
+          <span class="play-icon">▶</span>
+          <span class="reel-label">Reel placeholder</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="social-block">
+      <div class="social-block-head">
+        <div>
+          <div class="eyebrow">Watch the builds</div>
+          <h2>Latest on YouTube</h2>
+        </div>
+        <a href="https://www.youtube.com/@alexdmiley" target="_blank" rel="noopener" class="btn btn-outline">Subscribe on YouTube →</a>
+      </div>
+      <div class="video-row">
+        <a href="https://www.youtube.com/@alexdmiley" target="_blank" rel="noopener" class="video-card">
+          <span class="play-icon">▶</span>
+          <span class="reel-label">Video placeholder</span>
+        </a>
+        <a href="https://www.youtube.com/@alexdmiley" target="_blank" rel="noopener" class="video-card">
+          <span class="play-icon">▶</span>
+          <span class="reel-label">Video placeholder</span>
+        </a>
+        <a href="https://www.youtube.com/@alexdmiley" target="_blank" rel="noopener" class="video-card">
+          <span class="play-icon">▶</span>
+          <span class="reel-label">Video placeholder</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ==================================================== COMPLIANCE === -->
 <section id="compliance" class="compliance">
   <div class="wrap">
@@ -202,19 +261,14 @@
 
 <!-- ======================================================== STOCK === -->
 <section id="stock" class="stock">
-  <div class="wrap" x-data="stockSection">
+  <div class="wrap" x-data="stockSection({ limit: 6 })">
     <div class="stock-head">
       <div>
         <div class="eyebrow">For sale now</div>
         <h2>Current stock</h2>
-        <p style="color: var(--text-dim); font-size: 14.5px; margin-top: 12px; max-width: 48ch;">Loaded live from <code>stock.json</code> — edit that file to update what's listed here.</p>
+        <p style="color: var(--text-dim); font-size: 14.5px; margin-top: 12px; max-width: 48ch;">The 6 most recently listed cars, synced straight from Facebook Marketplace. See everything we've got on the full stock page.</p>
       </div>
-    </div>
-
-    <div class="stock-filters">
-      <template x-for="t in types" :key="t">
-        <button :class="{ 'is-active': filter === t }" @click="filter = t" x-text="t"></button>
-      </template>
+      <a href="stock.html" class="btn btn-primary">View all stock →</a>
     </div>
 
     <template x-if="loading">
@@ -222,21 +276,21 @@
     </template>
 
     <template x-if="!loading && filtered.length === 0">
-      <div class="stock-empty">No cars currently match that filter — check back soon.</div>
+      <div class="stock-empty">No cars currently listed — check back soon.</div>
     </template>
 
     <template x-if="!loading && filtered.length > 0">
       <div class="stock-grid">
         <template x-for="car in filtered" :key="car.id">
           <div class="car-card">
-            <div class="car-photo">
+            <a class="car-photo" :href="'car.html?slug=' + car.slug">
               <span x-text="car.title"></span>
               <span class="car-badge" :class="badgeClass(car)" x-text="car.status"></span>
               <span class="car-price" x-text="priceLabel(car)"></span>
-            </div>
+            </a>
             <div class="car-body">
               <div>
-                <h3 x-text="car.title"></h3>
+                <a :href="'car.html?slug=' + car.slug" class="car-title-link"><h3 x-text="car.title"></h3></a>
                 <div class="car-meta" x-text="car.location"></div>
               </div>
               <div class="car-tags">
@@ -352,7 +406,7 @@
 
       <div class="footer-col">
         <h4>— Explore</h4>
-        <a href="#stock">Current stock</a>
+        <a href="stock.html">Current stock</a>
         <a href="#how">How it works</a>
         <a href="#gallery">Gallery</a>
         <a href="#compliance">Compliance</a>
