@@ -8,8 +8,8 @@
     "fb_item_id": "1299770996546914",
     "description_file": "assets/stock-sync/1991-nissan-skyline-r32-gtr-series-1/description.txt",
     "photos": [
-      "assets/stock-sync/1991-nissan-skyline-r32-gtr-series-1/photo-1.jpg",
-      "assets/stock-sync/1991-nissan-skyline-r32-gtr-series-1/photo-2.jpg",
+      "assets/stock-sync/1991-nissan-skyline-r32-gtr-series-1/photo-1.png",
+      "assets/stock-sync/1991-nissan-skyline-r32-gtr-series-1/photo-2.png",
       "assets/stock-sync/1991-nissan-skyline-r32-gtr-series-1/photo-3.png",
       "assets/stock-sync/1991-nissan-skyline-r32-gtr-series-1/photo-4.png",
       "assets/stock-sync/1991-nissan-skyline-r32-gtr-series-1/photo-5.png"
@@ -26,10 +26,10 @@
     "description_file": "assets/stock-sync/1990-nissan-skyline-r32-gtr/description.txt",
     "photos": [
       "assets/stock-sync/1990-nissan-skyline-r32-gtr/photo-1.jpg",
-      "assets/stock-sync/1990-nissan-skyline-r32-gtr/photo-2.png",
+      "assets/stock-sync/1990-nissan-skyline-r32-gtr/photo-2.jpg",
       "assets/stock-sync/1990-nissan-skyline-r32-gtr/photo-3.jpg",
-      "assets/stock-sync/1990-nissan-skyline-r32-gtr/photo-4.png",
-      "assets/stock-sync/1990-nissan-skyline-r32-gtr/photo-5.png"
+      "assets/stock-sync/1990-nissan-skyline-r32-gtr/photo-4.jpg",
+      "assets/stock-sync/1990-nissan-skyline-r32-gtr/photo-5.jpg"
     ],
     "synced_at": "2026-08-02"
   },
@@ -42,7 +42,7 @@
     "fb_item_id": "1587810172715035",
     "description_file": "assets/stock-sync/1989-nissan-skyline-r32-gtr-series-1/description.txt",
     "photos": [
-      "assets/stock-sync/1989-nissan-skyline-r32-gtr-series-1/photo-1.jpg",
+      "assets/stock-sync/1989-nissan-skyline-r32-gtr-series-1/photo-1.png",
       "assets/stock-sync/1989-nissan-skyline-r32-gtr-series-1/photo-2.png",
       "assets/stock-sync/1989-nissan-skyline-r32-gtr-series-1/photo-3.png",
       "assets/stock-sync/1989-nissan-skyline-r32-gtr-series-1/photo-4.png",
@@ -60,9 +60,10 @@
     "description_file": "assets/stock-sync/1998-toyota-supra-mk4-series-2/description.txt",
     "photos": [
       "assets/stock-sync/1998-toyota-supra-mk4-series-2/photo-1.png",
-      "assets/stock-sync/1998-toyota-supra-mk4-series-2/photo-2.jpg",
-      "assets/stock-sync/1998-toyota-supra-mk4-series-2/photo-3.jpg",
-      "assets/stock-sync/1998-toyota-supra-mk4-series-2/photo-4.jpg"
+      "assets/stock-sync/1998-toyota-supra-mk4-series-2/photo-2.png",
+      "assets/stock-sync/1998-toyota-supra-mk4-series-2/photo-3.png",
+      "assets/stock-sync/1998-toyota-supra-mk4-series-2/photo-4.png",
+      "assets/stock-sync/1998-toyota-supra-mk4-series-2/photo-5.png"
     ],
     "synced_at": "2026-08-02"
   },
@@ -75,8 +76,8 @@
     "fb_item_id": "2332360490905926",
     "description_file": "assets/stock-sync/1994-nissan-skyline-r32-gtr-series-3/description.txt",
     "photos": [
-      "assets/stock-sync/1994-nissan-skyline-r32-gtr-series-3/photo-1.jpg",
-      "assets/stock-sync/1994-nissan-skyline-r32-gtr-series-3/photo-2.jpg",
+      "assets/stock-sync/1994-nissan-skyline-r32-gtr-series-3/photo-1.png",
+      "assets/stock-sync/1994-nissan-skyline-r32-gtr-series-3/photo-2.png",
       "assets/stock-sync/1994-nissan-skyline-r32-gtr-series-3/photo-3.png",
       "assets/stock-sync/1994-nissan-skyline-r32-gtr-series-3/photo-4.png",
       "assets/stock-sync/1994-nissan-skyline-r32-gtr-series-3/photo-5.png"
