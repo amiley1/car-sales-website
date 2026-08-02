@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Summit Auto Sales — Quality Used Cars</title>
+<title>Alex Miley JDM — Quality Used Cars</title>
 <meta name="description" content="PLACEHOLDER — Quality used vehicles, fully inspected, transparent pricing. Replace this copy and branding with your own before launch.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,14 +21,14 @@
 <!-- ============================================================ NAV === -->
 <nav class="site-nav" x-data="nav">
   <div class="wrap">
-    <a href="#top" class="brand">Summit <span>Auto</span></a>
+    <a href="#top" class="brand">Alex Miley <span>JDM</span></a>
 
     <div class="nav-links">
       <a href="#stock">Stock</a>
       <a href="#how">How it works</a>
       <a href="#gallery">Gallery</a>
       <a href="#compliance">Compliance</a>
-      <a href="#careers">Careers</a>
+      <a href="careers.html">Careers</a>
     </div>
     <a href="#enquire" class="btn btn-primary nav-cta-desktop">Enquire now</a>
 
@@ -42,7 +42,7 @@
     <a href="#how" @click="open = false">How it works</a>
     <a href="#gallery" @click="open = false">Gallery</a>
     <a href="#compliance" @click="open = false">Compliance</a>
-    <a href="#careers" @click="open = false">Careers</a>
+    <a href="careers.html" @click="open = false">Careers</a>
     <a href="#enquire" @click="open = false">Enquire now</a>
   </div>
 </nav>
@@ -325,79 +325,53 @@
 </section>
 
 <!-- ======================================================= CAREERS === -->
-<section id="careers" class="careers">
-  <div class="wrap careers-inner">
+<section id="careers" class="careers-teaser">
+  <div class="wrap careers-teaser-inner">
     <div class="eyebrow">Join the team</div>
     <h2>We're hiring</h2>
     <p class="lead">Experienced with used vehicle sales or workshop work? We're growing the team and want to hear from you.</p>
-
-    <div class="careers-form-wrap" x-data="careersForm">
-      <template x-if="!submitted">
-        <form @submit.prevent="submit" x-cloak>
-          <div class="field">
-            <label for="care-name">Full name</label>
-            <input id="care-name" name="name" x-model="name" placeholder="Full name" required>
-          </div>
-          <div class="field">
-            <label for="care-contact">Phone or email</label>
-            <input id="care-contact" name="contact" placeholder="Phone or email" required>
-          </div>
-          <div class="field">
-            <label for="care-message">Tell us about yourself</label>
-            <textarea id="care-message" name="message" rows="3" placeholder="Experience, role you're after…"></textarea>
-          </div>
-
-          <template x-if="error">
-            <div class="form-error">Something went wrong sending that — please try again, or email us directly.</div>
-          </template>
-
-          <div class="careers-btn-row">
-            <button type="submit" class="btn btn-primary" :disabled="submitting" x-text="submitting ? 'Sending…' : 'Submit application'"></button>
-          </div>
-        </form>
-      </template>
-
-      <template x-if="submitted">
-        <div class="success-block" x-cloak>
-          <div class="success-tag">✓ Application received</div>
-          <h3>Thanks, <span x-text="name ? name.split(' ')[0] : 'there'"></span>.</h3>
-          <p>We'll review your application and reach out if it's a fit.</p>
-          <button class="btn btn-outline" @click="reset">Edit application</button>
-        </div>
-      </template>
-    </div>
+    <a href="careers.html" class="btn btn-primary">View open roles →</a>
   </div>
 </section>
 
 <!-- ======================================================== FOOTER === -->
 <footer>
   <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <a href="#top" class="brand">Summit <span>Auto</span></a>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#top" class="brand">Alex Miley <span>JDM</span></a>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/alexmiley_/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2Zm0 1.8c-3.15 0-3.5.01-4.73.07-.97.04-1.5.2-1.85.34-.46.18-.8.4-1.15.75-.35.35-.57.68-.75 1.15-.14.35-.3.88-.34 1.85-.06 1.23-.07 1.58-.07 4.73s.01 3.5.07 4.73c.04.97.2 1.5.34 1.85.18.46.4.8.75 1.15.35.35.68.57 1.15.75.35.14.88.3 1.85.34 1.23.06 1.58.07 4.73.07s3.5-.01 4.73-.07c.97-.04 1.5-.2 1.85-.34.46-.18.8-.4 1.15-.75.35-.35.57-.68.75-1.15.14-.35.3-.88.34-1.85.06-1.23.07-1.58.07-4.73s-.01-3.5-.07-4.73c-.04-.97-.2-1.5-.34-1.85a2 2 0 0 0-.75-1.15 2 2 0 0 0-1.15-.75c-.35-.14-.88-.3-1.85-.34-1.23-.06-1.58-.07-4.73-.07Zm0 3.4a5.6 5.6 0 1 1 0 11.2 5.6 5.6 0 0 1 0-11.2Zm0 1.8a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Zm5.8-2a1.3 1.3 0 1 1-2.6 0 1.3 1.3 0 0 1 2.6 0Z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@alexdmiley" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M22 12s0-3.2-.4-4.7c-.24-.87-.92-1.55-1.79-1.79C18.3 5 12 5 12 5s-6.3 0-7.81.51a2.44 2.44 0 0 0-1.79 1.79C2 8.8 2 12 2 12s0 3.2.4 4.7c.24.87.92 1.55 1.79 1.79C5.7 19 12 19 12 19s6.3 0 7.81-.51a2.44 2.44 0 0 0 1.79-1.79C22 15.2 22 12 22 12Zm-12 3V9l5.2 3-5.2 3Z"/></svg>
+          </a>
+        </div>
       </div>
+
       <div class="footer-col">
-        <h4>Explore</h4>
+        <h4>— Explore</h4>
         <a href="#stock">Current stock</a>
         <a href="#how">How it works</a>
         <a href="#gallery">Gallery</a>
         <a href="#compliance">Compliance</a>
-        <a href="#careers">Careers</a>
+        <a href="careers.html">Careers</a>
         <a href="#enquire">Enquire</a>
       </div>
       <div class="footer-col">
-        <h4>Contact</h4>
+        <h4>— Contact</h4>
         <a href="mailto:info@example.com.au">info@example.com.au</a>
         <span>By appointment · AU</span>
       </div>
       <div class="footer-col">
-        <h4>Policies</h4>
+        <h4>— Policies</h4>
         <a href="#">Privacy Policy</a>
         <a href="#">Terms &amp; Conditions</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Summit Auto Sales — placeholder brand, swap before launch.</span>
+      <span>© 2026 Alex Miley JDM. All Rights Reserved.</span>
       <span>Built with plain HTML/CSS + Alpine.js</span>
     </div>
   </div>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Careers — Alex Miley JDM</title>
+<meta name="description" content="PLACEHOLDER — Open roles at Alex Miley JDM. Replace this copy and branding with your own before launch.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<!-- Component logic + placeholder Formspree endpoints — see script.js -->
+<script src="script.js" defer></script>
+<!-- Alpine.js (interactivity) -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
+</head>
+<body>
+
+<!-- ============================================================ NAV === -->
+<nav class="site-nav" x-data="nav">
+  <div class="wrap">
+    <a href="index.html#top" class="brand">Alex Miley <span>JDM</span></a>
+
+    <div class="nav-links">
+      <a href="index.html#stock">Stock</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="index.html#compliance">Compliance</a>
+      <a href="careers.html" style="color: var(--text);">Careers</a>
+    </div>
+    <a href="index.html#enquire" class="btn btn-primary nav-cta-desktop">Enquire now</a>
+
+    <button class="nav-toggle" @click="open = !open" :aria-expanded="open" aria-label="Toggle menu">
+      <span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" :class="{ 'is-open': open }" x-cloak>
+    <a href="index.html#stock" @click="open = false">Stock</a>
+    <a href="index.html#how" @click="open = false">How it works</a>
+    <a href="index.html#gallery" @click="open = false">Gallery</a>
+    <a href="index.html#compliance" @click="open = false">Compliance</a>
+    <a href="careers.html" @click="open = false">Careers</a>
+    <a href="index.html#enquire" @click="open = false">Enquire now</a>
+  </div>
+</nav>
+
+<!-- =========================================================== HERO === -->
+<section class="careers-hero">
+  <div class="wrap">
+    <div class="eyebrow">Be a part of something meaningful</div>
+    <h1>We're hiring</h1>
+    <p>We're on a mission to become the most trusted used car dealer in the region — and we're looking for the right people to help us get there. Be a part of it.</p>
+    <p class="careers-hero-note">Example roles below — replace with your real open positions before this page goes live.</p>
+  </div>
+</section>
+
+<!-- =================================================== OPEN POSITIONS === -->
+<section class="positions">
+  <div class="wrap">
+
+    <div class="position-card">
+      <div class="position-main">
+        <span class="position-badge">Full time</span>
+        <div class="eyebrow">Open position</div>
+        <h2>Sales Consultant</h2>
+        <p>We're hiring a full-time Sales Consultant — someone personable, driven, and genuinely excited to match people with their next car.</p>
+        <p><strong>Who you are:</strong> Friendly, persistent, and honest. You listen more than you pitch, you know the stock back to front, and you don't need to be pushy to close a deal.</p>
+        <p>Ready to help people find their next car? <a href="#apply">Apply below.</a></p>
+        <button class="btn btn-primary" @click="$store.careers.position = 'Sales Consultant'; document.getElementById('apply').scrollIntoView({ behavior: 'smooth' })">Apply for this role</button>
+      </div>
+      <div class="position-details">
+        <h3>The role</h3>
+        <ul class="role-checklist">
+          <li><span class="check">✓</span><span><strong>Salary + Commission:</strong> Competitive base plus uncapped commission on every sale.</span></li>
+          <li><span class="check">✓</span><span><strong>Experience Required:</strong> Prior car sales experience preferred but not essential — right attitude matters more.</span></li>
+          <li><span class="check">✓</span><span><strong>Day-to-Day:</strong> Greet walk-ins and online enquiries, run test drives, negotiate pricing, handle paperwork and finance referrals.</span></li>
+          <li><span class="check">✓</span><span><strong>Location:</strong> Sample Location, QLD</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="position-card position-card--reverse">
+      <div class="position-details">
+        <h3>The role</h3>
+        <ul class="role-checklist">
+          <li><span class="check">✓</span><span><strong>Salary + Incentive:</strong> Competitive above-award wage plus bonuses for quality and turnaround time.</span></li>
+          <li><span class="check">✓</span><span><strong>Experience Required:</strong> Qualified mechanic/technician, 2+ years post-trade experience.</span></li>
+          <li><span class="check">✓</span><span><strong>Day-to-Day:</strong> Pre-purchase inspections, reconditioning work, and general servicing across a mixed used-car fleet.</span></li>
+          <li><span class="check">✓</span><span><strong>Location:</strong> Sample Location, QLD</span></li>
+        </ul>
+      </div>
+      <div class="position-main">
+        <span class="position-badge">Full time</span>
+        <div class="eyebrow">Open position</div>
+        <h2>Workshop Technician</h2>
+        <p>We're hiring a full-time Workshop Technician to keep every car we sell honestly reconditioned and mechanically sound before it hits the lot.</p>
+        <p><strong>Who you are:</strong> Thorough, qualified, and take pride in doing the job right rather than just fast. You'll happily explain your work to a curious buyer.</p>
+        <p>Think you're the right fit? <a href="#apply">Apply below.</a></p>
+        <button class="btn btn-primary" @click="$store.careers.position = 'Workshop Technician'; document.getElementById('apply').scrollIntoView({ behavior: 'smooth' })">Apply for this role</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================================================= APPLY === -->
+<section id="apply" class="apply-section">
+  <div class="wrap">
+    <div class="apply-card" x-data="careersApplyForm">
+      <template x-if="!submitted">
+        <div>
+          <div class="eyebrow">Join the team</div>
+          <h2>Apply here</h2>
+          <p class="apply-lead">Fill it in, attach your resume, and we'll be in touch. No essays required.</p>
+
+          <form @submit.prevent="submit" enctype="multipart/form-data" x-cloak>
+            <div class="field">
+              <label for="app-name">Full name</label>
+              <input id="app-name" name="name" x-model="name" placeholder="Your full name" required>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="app-email">Email</label>
+                <input id="app-email" name="email" type="email" placeholder="you@email.com" required>
+              </div>
+              <div class="field">
+                <label for="app-mobile">Mobile number</label>
+                <input id="app-mobile" name="mobile" placeholder="e.g. 0412 345 678" required>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="app-position">Position</label>
+                <select id="app-position" name="position" x-model="$store.careers.position" required>
+                  <option value="">Select a role</option>
+                  <option>Sales Consultant</option>
+                  <option>Workshop Technician</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="app-current">Current position</label>
+                <input id="app-current" name="current_position" placeholder="Your current role">
+              </div>
+            </div>
+            <div class="field">
+              <label for="app-portfolio">Portfolio / LinkedIn <span class="optional">(optional)</span></label>
+              <input id="app-portfolio" name="portfolio" placeholder="https://">
+            </div>
+            <div class="field">
+              <label for="app-resume">Resume / CV</label>
+              <input id="app-resume" name="resume" type="file" required>
+            </div>
+
+            <template x-if="error">
+              <div class="form-error">Something went wrong sending that — please try again, or email us directly.</div>
+            </template>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;" :disabled="submitting" x-text="submitting ? 'Sending…' : 'Submit application'"></button>
+          </form>
+        </div>
+      </template>
+
+      <template x-if="submitted">
+        <div class="success-block" x-cloak>
+          <div class="success-tag">✓ Application received</div>
+          <h3>Thanks, <span x-text="name ? name.split(' ')[0] : 'there'"></span>.</h3>
+          <p>We'll review your application and reach out if it's a fit.</p>
+          <button class="btn btn-outline" @click="reset">Edit application</button>
+        </div>
+      </template>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================== FOOTER === -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html#top" class="brand">Alex Miley <span>JDM</span></a>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/alexmiley_/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2Zm0 1.8c-3.15 0-3.5.01-4.73.07-.97.04-1.5.2-1.85.34-.46.18-.8.4-1.15.75-.35.35-.57.68-.75 1.15-.14.35-.3.88-.34 1.85-.06 1.23-.07 1.58-.07 4.73s.01 3.5.07 4.73c.04.97.2 1.5.34 1.85.18.46.4.8.75 1.15.35.35.68.57 1.15.75.35.14.88.3 1.85.34 1.23.06 1.58.07 4.73.07s3.5-.01 4.73-.07c.97-.04 1.5-.2 1.85-.34.46-.18.8-.4 1.15-.75.35-.35.57-.68.75-1.15.14-.35.3-.88.34-1.85.06-1.23.07-1.58.07-4.73s-.01-3.5-.07-4.73c-.04-.97-.2-1.5-.34-1.85a2 2 0 0 0-.75-1.15 2 2 0 0 0-1.15-.75c-.35-.14-.88-.3-1.85-.34-1.23-.06-1.58-.07-4.73-.07Zm0 3.4a5.6 5.6 0 1 1 0 11.2 5.6 5.6 0 0 1 0-11.2Zm0 1.8a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Zm5.8-2a1.3 1.3 0 1 1-2.6 0 1.3 1.3 0 0 1 2.6 0Z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@alexdmiley" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M22 12s0-3.2-.4-4.7c-.24-.87-.92-1.55-1.79-1.79C18.3 5 12 5 12 5s-6.3 0-7.81.51a2.44 2.44 0 0 0-1.79 1.79C2 8.8 2 12 2 12s0 3.2.4 4.7c.24.87.92 1.55 1.79 1.79C5.7 19 12 19 12 19s6.3 0 7.81-.51a2.44 2.44 0 0 0 1.79-1.79C22 15.2 22 12 22 12Zm-12 3V9l5.2 3-5.2 3Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>— Explore</h4>
+        <a href="index.html#stock">Current stock</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="index.html#compliance">Compliance</a>
+        <a href="careers.html">Careers</a>
+        <a href="index.html#enquire">Enquire</a>
+      </div>
+      <div class="footer-col">
+        <h4>— Contact</h4>
+        <a href="mailto:info@example.com.au">info@example.com.au</a>
+        <span>By appointment · AU</span>
+      </div>
+      <div class="footer-col">
+        <h4>— Policies</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Alex Miley JDM. All Rights Reserved.</span>
+      <span>Built with plain HTML/CSS + Alpine.js</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

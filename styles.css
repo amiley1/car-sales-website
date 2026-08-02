@@ -13,8 +13,9 @@
   --text: #e9eaed;
   --text-dim: #9aa0ac;
   --text-mute: #6b7280;
-  --accent: #f5c344;
-  --accent-contrast: #0b0d10;
+  --accent: #3b82f6;
+  --accent-bright: #60a5fa;
+  --accent-contrast: #ffffff;
   --danger-bg: #1a0e0e;
   --danger-border: #4a2a2a;
   --danger-text: #e08a8a;
@@ -78,9 +79,9 @@ h1, h2, h3 {
 .btn-primary {
   background: var(--accent);
   color: var(--accent-contrast);
-  box-shadow: 0 0 26px rgba(245, 195, 68, .28);
+  box-shadow: 0 0 26px rgba(59, 130, 246, .28);
 }
-.btn-primary:hover { box-shadow: 0 0 38px rgba(245, 195, 68, .55); }
+.btn-primary:hover { box-shadow: 0 0 38px rgba(59, 130, 246, .55); }
 .btn-primary:disabled { opacity: .6; cursor: default; }
 .btn-outline {
   background: transparent;
@@ -160,7 +161,7 @@ h1, h2, h3 {
   overflow: hidden;
   padding: clamp(70px, 12vw, 130px) 0 clamp(60px, 9vw, 110px);
   background:
-    radial-gradient(ellipse 70% 60% at 50% 0%, rgba(245,195,68,.10) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 60% at 50% 0%, rgba(59,130,246,.10) 0%, transparent 60%),
     linear-gradient(180deg, #0d1014 0%, var(--bg) 100%);
   border-bottom: 1px solid var(--border-soft);
 }
@@ -300,7 +301,7 @@ h1, h2, h3 {
   position: absolute; top: 0; bottom: 0;
   width: 3px; background: var(--accent);
   transform: translateX(-50%);
-  box-shadow: 0 0 14px rgba(245,195,68,.6);
+  box-shadow: 0 0 14px rgba(59,130,246,.6);
 }
 .compare-grip {
   position: absolute; top: 50%; left: 50%;
@@ -309,7 +310,7 @@ h1, h2, h3 {
   background: var(--accent);
   display: flex; align-items: center; justify-content: center;
   color: var(--accent-contrast); font-size: 14px; font-weight: 700;
-  box-shadow: 0 0 20px rgba(245,195,68,.5);
+  box-shadow: 0 0 20px rgba(59,130,246,.5);
 }
 .compare-caption {
   text-align: center; color: var(--text-mute); font-size: 13px; margin-top: 16px;
@@ -427,7 +428,7 @@ h1, h2, h3 {
 .stock-empty { text-align: center; padding: 50px 20px; color: var(--text-mute); font-size: 14px; }
 
 /* -------------------------------------------------------------- ENQUIRE */
-.enquire, .careers {
+.enquire, .careers-teaser {
   padding: clamp(56px, 8vw, 110px) 0;
   border-bottom: 1px solid var(--border-soft);
   position: relative;
@@ -460,19 +461,23 @@ h1, h2, h3 {
 .success-block h3 { font-size: 26px; margin-bottom: 12px; }
 .success-block p { font-size: 14px; line-height: 1.6; color: var(--text-dim); margin-bottom: 16px; }
 
-/* --------------------------------------------------------------- CAREERS */
-.careers-inner { max-width: 700px; margin: 0 auto; text-align: center; }
-.careers-inner h2 { font-size: clamp(28px, 3.6vw, 42px); }
-.careers-inner p.lead { font-size: 15px; line-height: 1.65; color: var(--text-dim); max-width: 54ch; margin: 16px auto 0; }
-.careers-form-wrap { max-width: 440px; margin: 30px auto 0; text-align: left; }
-.careers-btn-row { display: flex; gap: 10px; }
-.careers-btn-row .btn-outline { flex: 0 0 auto; }
-.careers-btn-row .btn-primary { flex: 1; }
+/* --------------------------------------------------------------- CAREERS (homepage teaser) */
+.careers-teaser-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+.careers-teaser-inner h2 { font-size: clamp(28px, 3.6vw, 42px); }
+.careers-teaser-inner p.lead { font-size: 15px; line-height: 1.65; color: var(--text-dim); max-width: 54ch; margin: 16px auto 24px; }
 
 /* ---------------------------------------------------------------- FOOTER */
 footer { background: var(--bg-alt); }
 footer .wrap { padding: clamp(44px, 5vw, 68px) clamp(16px, 4vw, 48px); }
-.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: clamp(28px, 5vw, 48px); }
+.footer-top { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: clamp(28px, 5vw, 48px); }
+.footer-brand { display: flex; flex-direction: column; gap: 18px; }
+.footer-social { display: flex; gap: 10px; }
+.footer-social a {
+  width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-dim); transition: color .15s, border-color .15s;
+}
+.footer-social a:hover { color: var(--accent); border-color: var(--accent); }
 .footer-col h4 { font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--text-mute); margin: 0 0 14px; }
 .footer-col a, .footer-col span { display: block; text-decoration: none; color: var(--text-dim); font-size: 14px; margin-bottom: 10px; }
 .footer-col a:hover { color: var(--text); }
@@ -480,3 +485,64 @@ footer .wrap { padding: clamp(44px, 5vw, 68px) clamp(16px, 4vw, 48px); }
   border-top: 1px solid var(--border-soft); margin-top: 36px; padding-top: 20px;
   font-size: 12.5px; color: var(--text-mute); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
 }
+
+/* ---------------------------------------------------------- CAREERS PAGE */
+.careers-hero {
+  padding: clamp(56px, 9vw, 100px) 0 clamp(40px, 6vw, 64px);
+  text-align: center;
+  background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(59,130,246,.10) 0%, transparent 60%), linear-gradient(180deg, #0d1014 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--border-soft);
+}
+.careers-hero .wrap { max-width: 720px; }
+.careers-hero h1 { font-size: clamp(40px, 7vw, 80px); line-height: .95; margin: 14px 0 0; }
+.careers-hero p { font-size: 15.5px; line-height: 1.6; color: var(--text-dim); max-width: 56ch; margin: 20px auto 0; }
+.careers-hero-note { font-size: 12.5px; color: var(--text-mute); margin-top: 16px; }
+
+.positions { padding: clamp(48px, 7vw, 90px) 0; border-bottom: 1px solid var(--border-soft); }
+.position-card {
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 56px);
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: clamp(26px, 3.4vw, 44px);
+  margin-bottom: 22px;
+}
+.position-card:last-child { margin-bottom: 0; }
+.position-badge {
+  display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--accent); border: 1px solid var(--accent); border-radius: 20px; padding: 5px 12px; margin-bottom: 16px;
+}
+.position-main h2 { font-size: clamp(28px, 3.4vw, 40px); margin: 6px 0 14px; }
+.position-main p { font-size: 14.5px; line-height: 1.65; color: var(--text-dim); margin: 0 0 14px; }
+.position-main p a { color: var(--accent); text-decoration: underline; }
+.position-main .btn { margin-top: 6px; }
+.position-details h3 {
+  font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--text-mute);
+  margin: 0 0 18px; font-family: var(--font-body);
+}
+.role-checklist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+.role-checklist li { display: flex; gap: 12px; align-items: flex-start; font-size: 13.5px; line-height: 1.6; color: var(--text-dim); }
+.role-checklist .check {
+  flex: 0 0 auto; width: 20px; height: 20px; border-radius: 5px; background: var(--accent); color: #fff;
+  display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; margin-top: 1px;
+}
+.role-checklist strong { color: var(--text); }
+@media (max-width: 760px) {
+  .position-card, .position-card--reverse { grid-template-columns: 1fr; }
+}
+
+.apply-section { padding: clamp(48px, 7vw, 90px) 0; }
+.apply-card {
+  background: #f3f6fb; color: #0f1424; border-radius: var(--radius);
+  padding: clamp(28px, 4vw, 48px); max-width: 620px; margin: 0 auto;
+  box-shadow: 0 30px 80px rgba(0,0,0,.35);
+}
+.apply-card .eyebrow { color: var(--accent); }
+.apply-card h2 { color: #0f1424; font-size: clamp(30px, 4vw, 44px); }
+.apply-card .apply-lead { font-size: 14.5px; line-height: 1.6; color: #4b5468; margin: 12px 0 26px; }
+.apply-card .field label { color: #4b5468; }
+.apply-card .field input, .apply-card .field select, .apply-card .field textarea {
+  background: #fff; border-color: #d7deea; color: #0f1424;
+}
+.apply-card .field input:focus, .apply-card .field select:focus { border-color: var(--accent); }
+.apply-card .optional { text-transform: none; font-weight: 400; color: #8a92a3; }
+.apply-card .success-block h3 { color: #0f1424; }
+.apply-card .success-block p { color: #4b5468; }

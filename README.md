@@ -1,12 +1,12 @@
-# Summit Auto Sales — placeholder site
+# Alex Miley JDM
 
 A one-page marketing site built in plain HTML/CSS with Alpine.js for interactivity.
-Everything in here (brand name, colors, copy, photos, stock listings) is a
-placeholder — swap it for the real thing before launch.
+Brand name is set — but the colors, copy, photos, and stock listings are still
+placeholders. Swap them for the real thing before launch.
 
 ## Before going live
 
-1. **Branding** — replace "Summit Auto" (in `index.html`) and the CSS variables
+1. **Branding** — update the CSS variables
    at the top of `styles.css` (`--accent`, `--bg`, etc.) with your real colors.
 2. **Photos** — the hero, before/after, gallery and stock sections currently
    render dashed placeholder blocks instead of images. Replace the

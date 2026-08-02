@@ -146,7 +146,7 @@ function complianceMap() {
           const isActive = st.code === self.active;
           path.style.fill = isActive ? 'var(--accent)' : 'var(--card)';
           path.style.stroke = isActive ? 'var(--accent)' : 'var(--border)';
-          path.style.filter = isActive ? 'drop-shadow(0 0 10px rgba(245,195,68,.6))' : 'none';
+          path.style.filter = isActive ? 'drop-shadow(0 0 10px rgba(59,130,246,.6))' : 'none';
           text.style.fill = isActive ? 'var(--accent-contrast)' : 'var(--text-dim)';
           text.style.fontWeight = isActive ? '700' : '500';
         });
@@ -221,7 +221,9 @@ function enquiryForm() {
   };
 }
 
-function careersForm() {
+// Full application form on careers.html — supports a file upload (Resume/CV),
+// which FormData picks up automatically from the <input type="file">.
+function careersApplyForm() {
   return {
     submitting: false,
     submitted: false,
@@ -253,6 +255,7 @@ function careersForm() {
 
 document.addEventListener('alpine:init', () => {
   Alpine.store('enquiry', { message: '' });
+  Alpine.store('careers', { position: '' });
   Alpine.data('nav', () => ({ open: false }));
   Alpine.data('statCounter', statCounter);
   Alpine.data('compareSlider', compareSlider);
@@ -260,5 +263,5 @@ document.addEventListener('alpine:init', () => {
   Alpine.data('complianceMap', complianceMap);
   Alpine.data('stockSection', stockSection);
   Alpine.data('enquiryForm', enquiryForm);
-  Alpine.data('careersForm', careersForm);
+  Alpine.data('careersApplyForm', careersApplyForm);
 });
