@@ -340,5 +340,116 @@
       "assets/stock-sync/1994-nissan-skyline-r32-gtr-series-3-silver/photo-5.jpg"
     ],
     "posted": "2026-06-20"
+  },
+  {
+    "id": "1994-nissan-skyline-r32-gtr-white",
+    "slug": "1994-nissan-skyline-r32-gtr-white",
+    "title": "1994 Nissan Skyline R32 GTR Series 3",
+    "type": "R32 GT-R",
+    "make": "Nissan",
+    "model": "Skyline GT-R (R32)",
+    "chassisCode": "BNR32",
+    "engine": "RB26DETT 2.6L Twin-Turbo Inline-6 (Factory)",
+    "drivetrain": "ATTESA E-TS AWD",
+    "condition": "Stock",
+    "colour": "326 White",
+    "doors": 2,
+    "price": 72500,
+    "status": "sold",
+    "year": 1994,
+    "odometer": "100,450 km",
+    "transmission": "5-speed Manual",
+    "fuel": "Petrol",
+    "location": "Gold Coast, QLD",
+    "blurb": "Rare, largely factory Series 3 long-nose-crank example in 326 White with an almost complete N1 kit.",
+    "full_description": "1994 Nissan Skyline R32 GTR Series 3\nFINANCE available\n100,450kms on clock\nLate Series 3 Model\nFactory 326 White\nClean PPSR title\nHard to find low kilometre examples in stock form these days. This one also is the most desired spec being series 3 (long nose crank variation)\nIt has an almost complete N1 kit except the bonnet lip. The only aftermarket modifications are an Apexi boost gauge, Single din headunit and a Catback exhaust system.\nHas received a major service aswell as all items to pass a rwc completed. Upper link bushes, new shaft boots, oils, wheel alignment etc.\nHave more pictures underneath and walk around videos for anyone interested.\nCan Ship Australia wide with PRIX Car services.\nFinance available. No swaps.\nLocated in the Gold Coast, QLD",
+    "features": [
+      "Factory 326 White",
+      "100,450km",
+      "Almost Complete N1 Kit",
+      "Long Nose Crank Series 3",
+      "Fresh RWC Service"
+    ],
+    "photos": [
+      "assets/stock-sync/1994-nissan-skyline-r32-gtr-white/photo-1.png",
+      "assets/stock-sync/1994-nissan-skyline-r32-gtr-white/photo-2.png",
+      "assets/stock-sync/1994-nissan-skyline-r32-gtr-white/photo-3.png",
+      "assets/stock-sync/1994-nissan-skyline-r32-gtr-white/photo-4.jpg"
+    ],
+    "posted": "2026-06-17"
+  },
+  {
+    "id": "1994-nissan-gtr-tommy-kaira-lspec",
+    "slug": "1994-nissan-gtr-tommy-kaira-lspec",
+    "title": "1994 Nissan Skyline R32 GTR (Tommy Kaira L-Spec #0154)",
+    "type": "R32 GT-R",
+    "make": "Nissan",
+    "model": "Skyline GT-R (R32)",
+    "chassisCode": "BNR32",
+    "engine": "RB26DETT 2.6L Twin-Turbo Inline-6 (Tommy Kaira L-Spec, 300ps)",
+    "drivetrain": "ATTESA E-TS AWD",
+    "condition": "Lightly Modified",
+    "colour": "326 White",
+    "doors": 2,
+    "price": 74990,
+    "status": "sold",
+    "year": 1994,
+    "odometer": "154,000 km",
+    "transmission": "5-speed Manual",
+    "fuel": "Petrol",
+    "location": "Brisbane, QLD",
+    "blurb": "Genuine factory Tommy Kaira L-Spec #0154 - one of a limited run sent back to Tommy Kaira and tuned to 300ps.",
+    "full_description": "1994 Nissan Skyline R32 GTR\nFinance available\nTommy Kaira L-Spec #0154\nSeries 3 Model (long nose crank)\n154,000kms total\nFactory 326 White, Base spec Model\nTommy Kaira L-Spec package means this example was sent to them and tuned to 300ps (upgraded from factory 276ps)\nThere was more optional features available with the L-Spec package which this car did not receive. (Body kit, seats, cluster, wheels etc etc)\nHKS Cat back exhaust system\nHKS Fcon ECU\nBlitz coilovers\nGreddy strut brace\nTommy Kaira valley cover\nNismo oil cap\nUpgraded brake rotors\nN1 Front bumper, Bonnet and headlights\nNismo cluster (documented install - H28 112,790kms) currently reads 41,XXXkms.\nJapan light up number plates (still work)\nFull walk around videos & Underside pics available\npre purchase inspections welcomed\nFinance available\nLocated Gold Coast, Can ship Australia wide",
+    "features": [
+      "Genuine Tommy Kaira L-Spec #0154",
+      "Tuned to 300ps",
+      "HKS Fcon ECU",
+      "N1 Front-End Conversion",
+      "Japan Light-Up Plates"
+    ],
+    "photos": [
+      "assets/stock-sync/1994-nissan-gtr-tommy-kaira-lspec/photo-1.jpg",
+      "assets/stock-sync/1994-nissan-gtr-tommy-kaira-lspec/photo-2.jpg",
+      "assets/stock-sync/1994-nissan-gtr-tommy-kaira-lspec/photo-3.jpg",
+      "assets/stock-sync/1994-nissan-gtr-tommy-kaira-lspec/photo-4.jpg"
+    ],
+    "posted": "2026-04-28"
+  },
+  {
+    "id": "1994-nissan-skyline-r32-gtr-2.8l",
+    "slug": "1994-nissan-skyline-r32-gtr-2.8l",
+    "title": "1994 Nissan Skyline R32 GTR 2.8L Stroker",
+    "type": "R32 GT-R",
+    "make": "Nissan",
+    "model": "Skyline GT-R (R32)",
+    "chassisCode": "BNR32",
+    "engine": "RB28DETT 2.8L Twin-Turbo Inline-6 (Tomei Stroker, ARMS B7660 Turbos)",
+    "drivetrain": "ATTESA E-TS AWD",
+    "condition": "Heavily Modified",
+    "colour": "326 White",
+    "doors": 2,
+    "price": 84990,
+    "status": "sold",
+    "year": 1994,
+    "odometer": "202,000 km",
+    "transmission": "5-speed Manual",
+    "fuel": "Petrol",
+    "location": "Gold Coast, QLD",
+    "blurb": "Rare Tomei 2.8L stroker build with ARMS twin turbos, Ferrari F50/R34 Brembo brakes and genuine bronze TE37s, tuned to 460hp in Japan.",
+    "full_description": "1994 Nissan Skyline R32 GTR 2.8L\nFINANCE AVAILABLE\nUp for sale is one of the best street build setups for a GTR; Tomei 2.8L, HKS Vcam, Nismo intake, F50 Brembo's, TE's the list goes on!\nThis example is factory 326 White and a series 3 model. It has full documented history, dyno sheets etc from Japan.\nClean PPSR Title\n202,000kms on chassis\nNot a Vspec 2; only a base spec model\nOriginal 326 White, 1994 Series 3 Model\nTuned in Japan making 460hp on 14psi\nLow boost tune is 401hp on 10.5psi\nCurrent setup for a really responsive and torque tune. Not high hp, although it has the potential to make a lot more power.\nModifications:\nTomei 2.8L Crank\nTomei Pistons\nTomei Rods\nTomei Metal headgasket\nTomei headbolt studs\nTomei ARMS B7660 Twin Turbos\nHKS Vcam 272 Step 2 (22007)\nHKS CamGears\nHKS Oil Pump\nHKS Oil cooler\nHKS Oil filter relocation kit\nHKS Front Mount intercooler\nHKS Hardpipe kit\nHKS Pod filters\nHKS Oil cap\nHKS EVC\nHKS Fcon ECU\nTrust Front diff housing\nCalasonic alloy radiator\nATS Triple plate carbon clutch kit\n3inch titanium exhaust system\nCatch can setup\nSwirl pot setup\nBattery relocation to boot\nR34 GTR Vspec II Rear differential & Shafts\nAragosta coilovers with tank type shock\nCusco upper control arm\nNismo Lower arms\nFerrari F50 Brembo front\n34GTR Brembo's rear\nUnderbody bracing kit\nGenuine N1 Bumper\nGenuine N1 skirts\nGenuine N1 bonnet lip\nNismo front cooling panel\nHasemi Motorsport Carbon boot lip\nCarbon front bumper lip\nJapanese light up plates\nVspec II Boot sticker\nNissan weather shields\nGenuine 18 x 10.5 +20 Bronze TE37's\nAdvan AD08r tyres 265 / 35 / 18\nGenuine Recaro seats\nNismo white face cluster\nNismo white face triple gauge\nNismo floor mats\nNismo old logo door handle covers\nR34 GTR Pedal covers\nPanasonic Headunit setup\nAircon control relocated to arm rest\n+ More\nOverall this is a great setup GTR for street driving, it's super responsive and comfortable to drive.\nIt's overall in great condition and definitely won't last long as 2.8L GTR's rarely pop up for sale.\nLocated in Gold Coast, Can ship Australia wide\nFINANCE AVAILABLE, No Swaps.",
+    "features": [
+      "Tomei 2.8L Stroker Kit",
+      "460HP @ 14psi",
+      "Ferrari F50 Brembo Brakes",
+      "Genuine Bronze TE37 Wheels",
+      "Full Japan Documented History"
+    ],
+    "photos": [
+      "assets/stock-sync/1994-nissan-skyline-r32-gtr-2.8l/photo-1.jpg",
+      "assets/stock-sync/1994-nissan-skyline-r32-gtr-2.8l/photo-2.jpg",
+      "assets/stock-sync/1994-nissan-skyline-r32-gtr-2.8l/photo-3.jpg",
+      "assets/stock-sync/1994-nissan-skyline-r32-gtr-2.8l/photo-4.jpg"
+    ],
+    "posted": "2026-05-18"
   }
 ]

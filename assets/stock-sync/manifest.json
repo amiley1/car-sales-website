@@ -151,5 +151,53 @@
       "assets/stock-sync/1994-nissan-skyline-r32-gtr-series-3-silver/photo-5.jpg"
     ],
     "synced_at": "2026-08-03"
+  },
+  {
+    "title": "1994 Nissan Skyline R32 GTR",
+    "slug": "1994-nissan-skyline-r32-gtr-white",
+    "price": "$72,500",
+    "status": "sold",
+    "listed_date": "6/17",
+    "fb_item_id": "888399837623004",
+    "description_file": "assets/stock-sync/1994-nissan-skyline-r32-gtr-white/description.txt",
+    "photos": [
+      "assets/stock-sync/1994-nissan-skyline-r32-gtr-white/photo-1.png",
+      "assets/stock-sync/1994-nissan-skyline-r32-gtr-white/photo-2.png",
+      "assets/stock-sync/1994-nissan-skyline-r32-gtr-white/photo-3.png",
+      "assets/stock-sync/1994-nissan-skyline-r32-gtr-white/photo-4.jpg"
+    ],
+    "synced_at": "2026-08-03"
+  },
+  {
+    "title": "1994 Nissan Skyline R32 GTR (Tommy Kaira L-Spec)",
+    "slug": "1994-nissan-gtr-tommy-kaira-lspec",
+    "price": "A$74,990",
+    "status": "sold",
+    "listed_date": "4/28",
+    "fb_item_id": "739223385878886",
+    "description_file": "assets/stock-sync/1994-nissan-gtr-tommy-kaira-lspec/description.txt",
+    "photos": [
+      "assets/stock-sync/1994-nissan-gtr-tommy-kaira-lspec/photo-1.jpg",
+      "assets/stock-sync/1994-nissan-gtr-tommy-kaira-lspec/photo-2.jpg",
+      "assets/stock-sync/1994-nissan-gtr-tommy-kaira-lspec/photo-3.jpg",
+      "assets/stock-sync/1994-nissan-gtr-tommy-kaira-lspec/photo-4.jpg"
+    ],
+    "synced_at": "2026-08-03"
+  },
+  {
+    "title": "1994 Nissan Skyline R32 GTR 2.8L",
+    "slug": "1994-nissan-skyline-r32-gtr-2.8l",
+    "price": "A$84,990",
+    "status": "sold",
+    "listed_date": "5/18",
+    "fb_item_id": "992765387053157",
+    "description_file": "assets/stock-sync/1994-nissan-skyline-r32-gtr-2.8l/description.txt",
+    "photos": [
+      "assets/stock-sync/1994-nissan-skyline-r32-gtr-2.8l/photo-1.jpg",
+      "assets/stock-sync/1994-nissan-skyline-r32-gtr-2.8l/photo-2.jpg",
+      "assets/stock-sync/1994-nissan-skyline-r32-gtr-2.8l/photo-3.jpg",
+      "assets/stock-sync/1994-nissan-skyline-r32-gtr-2.8l/photo-4.jpg"
+    ],
+    "synced_at": "2026-08-03"
   }
 ]
