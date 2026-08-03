@@ -168,9 +168,9 @@ h1, h2, h3 {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-image: url('assets/stock-sync/1990-nissan-skyline-r32-gtr/photo-5.jpg');
+  background-image: url('assets/site/hero-r32.jpg');
   background-size: cover;
-  background-position: 62% 42%;
+  background-position: 58% 54%;
   transform: scale(1.02);
 }
 .hero__scrim {
@@ -314,6 +314,36 @@ h1, h2, h3 {
 .gallery {
   padding: clamp(56px, 8vw, 100px) 0;
   border-bottom: 1px solid var(--border-soft);
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.gallery-item {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  aspect-ratio: 16 / 9;
+}
+.gallery-item--wide { grid-column: span 2; }
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s cubic-bezier(.16,1,.3,1);
+}
+.gallery-item:hover img { transform: scale(1.05); }
+@media (max-width: 900px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-item--wide { grid-column: span 2; }
+}
+@media (max-width: 560px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-item--wide { grid-column: span 1; }
 }
 .carousel { position: relative; max-width: 900px; margin: 0 auto; }
 .carousel-viewport { overflow: hidden; border-radius: var(--radius); border: 1px solid var(--border); }

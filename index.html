@@ -118,29 +118,20 @@
 <section id="gallery" class="gallery">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">Recent arrivals</div>
+      <div class="eyebrow">The collection</div>
       <h2>A look at what we sell</h2>
-      <p>A few recent vehicles that have come through the yard — placeholder photos, swap in your own gallery images.</p>
+      <p>A selection of Skyline GT-Rs that have come through the yard — R32s in every shade, each one detailed and shot in the studio.</p>
     </div>
 
-    <div class="carousel" x-data="gallery">
-      <div class="carousel-viewport">
-        <div class="carousel-track" :style="`transform: translateX(-${index * 100}%)`">
-          <template x-for="(slide, i) in slides" :key="i">
-            <div class="carousel-slide">
-              <strong x-text="'Vehicle photo ' + slide"></strong>
-              <span>Placeholder — replace with a real gallery photo</span>
-            </div>
-          </template>
-        </div>
-      </div>
-      <button class="carousel-arrow prev" @click="prev" aria-label="Previous photo">‹</button>
-      <button class="carousel-arrow next" @click="next" aria-label="Next photo">›</button>
-      <div class="carousel-dots">
-        <template x-for="(slide, i) in slides" :key="i">
-          <button :class="{ 'is-active': i === index }" @click="goTo(i)" :aria-label="'Go to photo ' + (i + 1)"></button>
-        </template>
-      </div>
+    <div class="gallery-grid">
+      <figure class="gallery-item gallery-item--wide"><img src="assets/site/gallery-01.jpg" alt="Nissan Skyline R32 GT-R in white pearl, front three-quarter" loading="lazy"></figure>
+      <figure class="gallery-item"><img src="assets/site/gallery-02.jpg" alt="Nissan Skyline R32 GT-R in black, front three-quarter" loading="lazy"></figure>
+      <figure class="gallery-item"><img src="assets/site/gallery-03.jpg" alt="Nissan Skyline R32 GT-R in gunmetal, side profile" loading="lazy"></figure>
+      <figure class="gallery-item"><img src="assets/site/gallery-04.jpg" alt="Nissan Skyline R32 GT-R in white pearl, side profile" loading="lazy"></figure>
+      <figure class="gallery-item"><img src="assets/site/gallery-05.jpg" alt="Nissan Skyline R32 GT-R in gunmetal, front three-quarter" loading="lazy"></figure>
+      <figure class="gallery-item"><img src="assets/site/gallery-06.jpg" alt="Nissan Skyline R32 GT-R in black, rear three-quarter" loading="lazy"></figure>
+      <figure class="gallery-item"><img src="assets/site/gallery-07.jpg" alt="Nissan Skyline R32 GT-R in silver, front three-quarter" loading="lazy"></figure>
+      <figure class="gallery-item gallery-item--wide"><img src="assets/site/gallery-08.jpg" alt="Nissan Skyline R32 GT-R in white pearl, rear three-quarter" loading="lazy"></figure>
     </div>
   </div>
 </section>
